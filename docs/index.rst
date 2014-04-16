@@ -14,6 +14,7 @@ Contents:
    readme
    installation
    usage
+   roadmap
    contributing
    authors
    history
