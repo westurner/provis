@@ -19,34 +19,43 @@ prepared to switch over.
 
 Resources (Inputs):
 
-* Minimal ISO
+* OS ISOs
+
+  * http://releases.ubuntu.com/12.04/
+  * https://help.ubuntu.com/community/Installation/MinimalCD
+
 * Package Repositories
+
+  * Cached locally
+
 * Configsets
 
 
 Tasks:
 
-* Create new [VirtualBox / Vagrant] basebox with Packer
+* [ ] Create new [VirtualBox / Vagrant] basebox with Packer
 
-  * Install Packer (go)
-  * Download Ubuntu Minimal Image
-  * Create/adapt mimimal configsets for generating a Vagrant basebox
+  * [x] Install Packer (go)
+  * [x] Download Ubuntu Minimal Image
+  * [ ] Create/adapt mimimal configsets for generating a Vagrant basebox
 
-    * VirtualBox guest tools (~NTP)
+    * [ ] VirtualBox guest tools (~NTP)
+    * [ ] Apt.conf
+    * [ ] Hosts file
 
-* Create Vagrantfile for launching basebox
+* [ ] Create Vagrantfile for launching basebox
 
-  * Configure DNS support (landrush)
-  * Configure Provisioning support (configsets)
+  * [ ] Configure DNS support (landrush)
+  * [ ] Configure Provisioning support (configsets)
   
-* Create configsets
+* [ ] Create configsets
 
-* Launch basebox with configset
+* [ ] Launch basebox with configset
 
-  * Provision
-  * Configset
+  * [ ] Provision
+  * [ ] Configset
 
-Basebox configset::
+[ ] Basebox configset::
 
   users:
    - root/vagrant
@@ -58,7 +67,7 @@ Basebox configset::
   etckeeper:
 
 
-Workstation configset::
+[ ] Workstation configset::
 
   TODO: list installed packages (transitive reduction)
   i3wm
@@ -68,7 +77,7 @@ Workstation configset::
   nginx
 
 
-Gateway configset::
+[ ] Gateway configset::
 
   networking:
     ip_forward: True
@@ -81,17 +90,17 @@ Gateway configset::
     remote access
 
 
-MySQL configset::
+[ ] MySQL configset::
 
   mysql
 
 
-Postgres configset::
+[ ] Postgres configset::
 
   postgres
 
 
-Appserver configset::
+[ ] Appserver configset::
 
   nginx
   build-essentials?
