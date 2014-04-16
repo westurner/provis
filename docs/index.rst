@@ -16,6 +16,7 @@ Contents:
    usage
    roadmap
    contributing
+   tools
    authors
    history
 
