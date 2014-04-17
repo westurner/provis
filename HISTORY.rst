@@ -13,5 +13,8 @@ History
 * Created scripts/download_ubuntu_isos.sh
 * Created scripts/parse_ubuntu_miniiso_checksums.py
 
+* Imported packer/scripts from `cargomedia/vagrant-boxes
+  <https://github.com/cargomedia/vagrant-boxes>`_
+
 .. _cookiecutter: https://github.com/audreyr/cookiecutter
 .. _cookiecutter-pypackage: https://github.com/audreyr/cookiecutter-pypackage
