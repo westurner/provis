@@ -57,6 +57,19 @@ install_virtualbox_apt() {
   sudo apt-get install virtualbox-4.3
 }
 
+## Docker
+install_docker_apt() {
+  [ -e /usr/lib/apt/methods/https ] || {
+    apt-get update
+    apt-get install apt-transport-https
+  }
+  sudo sh -c "echo 'deb https://get.docker.io/ubuntu docker main' \
+    > /etc/apt/sources.list.d/docker.list"
+  sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 36A1D7869245C8950F966E92D8576A8BA88D21E9
+  sudo apt-get update
+  sudo apt-get install lxc-docker
+}
+
 
 ## Go
 install_go_gvm() {
@@ -105,6 +118,7 @@ main() {
   install_main_apt
   install_vagrant_dpkg
   install_packer_binary
+  install_docker_apt
   install_virtualbox_apt
 }
 
