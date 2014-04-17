@@ -1,0 +1,89 @@
+{
+  "description": "westurner/provis Ubuntu 12.04.4 minimal amd64 ({{ isotime }})",
+  "builders": [
+    {
+      "type": "virtualbox-iso",
+      "guest_os_type": "Ubuntu_64",
+      "iso_url": "http://provis.create.wrd.nu/isos/ubuntu/ubuntu-12.04-minimal-amd64.updates.iso",
+      "iso_checksum": "9520126eb734ccbbd65beaab462ae185",
+      "iso_checksum_type": "md5",
+      "ssh_username": "ubuntu",
+      "ssh_password": "ubuntu",
+      "ssh_wait_timeout": "3000s",
+      "boot_wait": "3s",
+      "http_directory": "./http_directory/",
+      "boot_command": [
+        "<esc><wait>",
+        "install noapic ",
+        "preseed/url=http://{{ .HTTPIP }}:{{ .HTTPPort }}/ubuntu-server.preseed ",
+        "debian-installer=en_US auto locale=en_US kbd-chooser/method=us ",
+        "debconf/frontend=noninteractive ",
+        "hostname={{ .Name }} ",
+        "netcfg/get_hostname={{ .Name }} ",
+        "keyboard-configuration/modelcode=SKIP keyboard-configuration/layout=USA ",
+        "keyboard-configuration/variant=USA console-setup/ask_detect=false ",
+        "initrd=initrd.gz -- <enter>"
+      ],
+      "guest_additions_path": "VBoxGuestAdditions_{{.Version}}.iso",
+      "shutdown_command": "echo 'ubuntu' | sudo -S shutdown -P now",
+      "disk_size": "40000",
+      "format": "ovf",
+      "headless": false
+    },
+    {
+      "type": "docker",
+      "image": "ubuntu",
+      "export_path": "image-TODO.tar",
+      "run_command": [
+        "run", "-d", "-i", "-t", "-v",
+        "{{.Volumes}}",
+        "{{.Image}}",
+        "/bin/bash"
+      ]
+    }
+  ],
+
+  "provisioners": [
+    {
+      "type": "shell",
+      "scripts": [
+        "scripts/root_setup.sh"
+      ],
+      "override": {
+        "virtualbox": {
+          "execute_command": "echo 'ubuntu' | sudo -S sh '{{ .Path }}'"
+        }
+      }
+    },
+    {
+      "type": "shell",
+      "scripts": [
+        "scripts/setup_vagrant_keys.sh"
+      ]
+    }
+  ],
+
+  "post-processors": [
+    {
+      "type": "vagrant",
+      "compression_level": 1,
+      "keep_input_artifact": true,
+      "override": {
+        "vmware": {
+            "compression_level": 0
+        }
+      },
+      "only": ["virtualbox-iso"]
+    },
+    {
+      "type": "docker-import",
+      "repository": "westurner/provis",
+      "tag": "0.1.0",
+      "only": ["docker"]
+    },
+    {
+      "type": "docker-push",
+      "only": ["docker"]
+    }
+  ]
+}

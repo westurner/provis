@@ -44,3 +44,4 @@ docs/_build
 
 # Tool install files
 install_
+packer/packer_cache
