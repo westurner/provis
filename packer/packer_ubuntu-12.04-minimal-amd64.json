@@ -2,6 +2,7 @@
   "description": "westurner/provis Ubuntu 12.04.4 minimal amd64 ({{ isotime }})",
   "builders": [
     {
+      "name": "virtualbox",
       "type": "virtualbox-iso",
       "guest_os_type": "Ubuntu_64",
       "iso_url": "http://provis.create.wrd.nu/isos/ubuntu/ubuntu-12.04-minimal-amd64.updates.iso",
@@ -47,19 +48,18 @@
     {
       "type": "shell",
       "scripts": [
-        "scripts/root_setup.sh"
+        "scripts/base.sh",
+        "scripts/virtualbox.sh",
+        "scripts/virtualbox-vagrant.sh",
+        "scripts/cleanup.sh",
+        "scripts/virtualbox-cleanup.sh"
       ],
+      "execute_command": "{{.Vars}} sudo -E sh '{{.Path}}'",
       "override": {
         "virtualbox": {
-          "execute_command": "echo 'ubuntu' | sudo -S sh '{{ .Path }}'"
+          "execute_command": "echo 'ubuntu' | {{.Vars}} sudo -E -S sh '{{ .Path }}'"
         }
       }
-    },
-    {
-      "type": "shell",
-      "scripts": [
-        "scripts/setup_vagrant_keys.sh"
-      ]
     }
   ],
 
@@ -73,7 +73,7 @@
             "compression_level": 0
         }
       },
-      "only": ["virtualbox-iso"]
+      "only": ["virtualbox"]
     },
     {
       "type": "docker-import",

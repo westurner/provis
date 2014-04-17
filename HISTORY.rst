@@ -12,7 +12,7 @@ History
 * Created scripts/install_tools.sh
 * Created scripts/download_ubuntu_isos.sh
 * Created scripts/parse_ubuntu_miniiso_checksums.py
-
+* Created and tested packer JSON and ubuntu 12.04 mini.iso preseed
 * Imported packer/scripts from `cargomedia/vagrant-boxes
   <https://github.com/cargomedia/vagrant-boxes>`_
 
