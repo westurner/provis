@@ -82,11 +82,12 @@ d-i     time/zone string US/Central
 d-i    pkgsel/include string openssh-server
 
 tasksel tasksel/first multiselect ssh-server
+tasksel tasksel/desktop multiselect none
 
 
 # Skip virtualbox-ose-guest
 # https://groups.google.com/forum/#!topic/linux.debian.maint.boot/d6eEGO4Lkqw
-#d-i preseed/early_command string \
-#  echo -e '#! /bin/sh\necho>/usr/lib/pre-pkgsel.d/20install-hwpackages' \
-#    >/usr/lib/pre-pkgsel.d/19remove-install-hwpackages; \
-#    chmod 755 /usr/lib/pre-pkgsel.d/19remove-install-hwpackages
+d-i preseed/early_command string \
+  echo -e '#! /bin/sh\necho>/usr/lib/pre-pkgsel.d/20install-hwpackages' \
+    >/usr/lib/pre-pkgsel.d/19remove-install-hwpackages; \
+    chmod 755 /usr/lib/pre-pkgsel.d/19remove-install-hwpackages

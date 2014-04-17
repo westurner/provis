@@ -45,3 +45,6 @@ docs/_build
 # Tool install files
 install_
 packer/packer_cache
+*.box
+packer/output-virtualbox
+vagrant/.vagrant/

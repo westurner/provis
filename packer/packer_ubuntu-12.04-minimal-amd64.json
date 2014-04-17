@@ -1,5 +1,13 @@
 {
   "description": "westurner/provis Ubuntu 12.04.4 minimal amd64 ({{ isotime }})",
+  "variables": {
+    "ssh_name": "ubuntu",
+    "ssh_pass": "ubuntu",
+    "hostname": "pvbx",
+    "aptproxy": "http://apt.create.wrd.nu:23142",
+    "tasksels": "ssh-server",
+    "taskseld": "none"
+  },
   "builders": [
     {
       "name": "virtualbox",
@@ -8,8 +16,8 @@
       "iso_url": "http://provis.create.wrd.nu/isos/ubuntu/ubuntu-12.04-minimal-amd64.updates.iso",
       "iso_checksum": "9520126eb734ccbbd65beaab462ae185",
       "iso_checksum_type": "md5",
-      "ssh_username": "ubuntu",
-      "ssh_password": "ubuntu",
+      "ssh_username": "{{user `ssh_name`}}",
+      "ssh_password": "{{user `ssh_pass`}}",
       "ssh_wait_timeout": "3000s",
       "boot_wait": "3s",
       "http_directory": "./http_directory/",
@@ -19,14 +27,15 @@
         "preseed/url=http://{{ .HTTPIP }}:{{ .HTTPPort }}/ubuntu-server.preseed ",
         "debian-installer=en_US auto locale=en_US kbd-chooser/method=us ",
         "debconf/frontend=noninteractive ",
-        "hostname={{ .Name }} ",
-        "netcfg/get_hostname={{ .Name }} ",
+        "hostname={{user `hostname`}} ",
         "keyboard-configuration/modelcode=SKIP keyboard-configuration/layout=USA ",
         "keyboard-configuration/variant=USA console-setup/ask_detect=false ",
+        "tasks={{user `tasksels`}} ",
+        "desktop={{user `taskseld`}} ",
         "initrd=initrd.gz -- <enter>"
       ],
-      "guest_additions_path": "VBoxGuestAdditions_{{.Version}}.iso",
-      "shutdown_command": "echo 'ubuntu' | sudo -S shutdown -P now",
+      "guest_additions_path": "VBoxGuestAdditions.iso",
+      "shutdown_command": "echo '{{user `ssh_pass`}}' | sudo -S shutdown -P now",
       "disk_size": "40000",
       "format": "ovf",
       "headless": false
@@ -34,7 +43,7 @@
     {
       "type": "docker",
       "image": "ubuntu",
-      "export_path": "image-TODO.tar",
+      "export_path": "docker-image-{{user `hostname`}}.tar",
       "run_command": [
         "run", "-d", "-i", "-t", "-v",
         "{{.Volumes}}",
@@ -50,7 +59,6 @@
       "scripts": [
         "scripts/etckeeper.sh",
         "scripts/ufw.sh",
-        "scripts/selinux.sh",
         "scripts/base.sh",
         "scripts/virtualbox.sh",
         "scripts/virtualbox-vagrant.sh",
@@ -60,7 +68,7 @@
       "execute_command": "{{.Vars}} sudo -E sh '{{.Path}}'",
       "override": {
         "virtualbox": {
-          "execute_command": "echo 'ubuntu' | {{.Vars}} sudo -E -S sh '{{ .Path }}'"
+          "execute_command": "echo '{{user `ssh_pass`}}' | {{.Vars}} sudo -E -S sh '{{ .Path }}'"
         }
       }
     }

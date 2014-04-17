@@ -15,6 +15,7 @@ History
 * Created and tested packer JSON and ubuntu 12.04 mini.iso preseed
 * Imported packer/scripts from `cargomedia/vagrant-boxes
   <https://github.com/cargomedia/vagrant-boxes>`_
+* Adapted, modified, and tested Packer JSON, preseed, and scripts
 
 .. _cookiecutter: https://github.com/audreyr/cookiecutter
 .. _cookiecutter-pypackage: https://github.com/audreyr/cookiecutter-pypackage
