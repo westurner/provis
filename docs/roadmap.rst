@@ -22,7 +22,10 @@ Resources (Inputs):
 * OS ISOs
 
   * http://releases.ubuntu.com/12.04/
-  * https://help.ubuntu.com/community/Installation/MinimalCD
+  * https://help.ubuntu.com/community/Installation/MinimalCDa
+
+    * Pull mini.iso from precise-updates (precise/mini.iso is broken)
+      https://bugs.launchpad.net/ubuntu/+source/net-retriever/+bug/1067934
 
 * Package Repositories
 
@@ -33,18 +36,29 @@ Resources (Inputs):
 
 Tasks:
 
+* [x] Cherrypick apt-cacher-ng binary from trusty
+  (HTTPS support for docker apt repos)
+
+
 * [ ] Create new [VirtualBox / Vagrant] basebox with Packer
 
   * [x] Install Packer (go)
   * [x] Download Ubuntu Minimal Image
+
   * [ ] Create/adapt mimimal configsets for generating a Vagrant basebox
 
-    * [ ] VirtualBox guest tools (~NTP)
+    * [x] setup shell scripts (thanks!)
+    * [ ] vagrant (SSH errors)
+    * [x] VirtualBox guest tools image (~NTP)
+    * [x] etckeeper
+    * [x] ufw
     * [ ] Apt.conf
     * [ ] Hosts file
 
 * [ ] Create Vagrantfile for launching basebox
 
+  * [x] vagrant init
+  * [ ] vagrant up (vagrant SSH errors)
   * [ ] Configure DNS support (landrush)
   * [ ] Configure Provisioning support (configsets)
   
