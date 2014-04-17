@@ -48,6 +48,9 @@
     {
       "type": "shell",
       "scripts": [
+        "scripts/etckeeper.sh",
+        "scripts/ufw.sh",
+        "scripts/selinux.sh",
         "scripts/base.sh",
         "scripts/virtualbox.sh",
         "scripts/virtualbox-vagrant.sh",
