@@ -36,19 +36,25 @@ Resources (Inputs):
 
 Tasks:
 
-* [x] Cherrypick apt-cacher-ng binary from trusty
-  (HTTPS support for docker apt repos)
+* [x] Download OS netboot ISOs
 
+* [x] Configure package mirrors
+
+  * [x] Cherrypick apt-cacher-ng binary from trusty
+    (HTTPS support for docker apt repos)
+
+* [x] Install tools
+
+  * [x] Document Homepage, Source, Docs (docs/tools.rst)
+  * [x] Script installation (scripts/install_tools.sh)
 
 * [ ] Create new [VirtualBox / Vagrant] basebox with Packer
-
-  * [x] Install Packer (go)
-  * [x] Download Ubuntu Minimal Image
 
   * [ ] Create/adapt mimimal configsets for generating a Vagrant basebox
 
     * [x] setup shell scripts (thanks!)
-    * [ ] vagrant (SSH errors)
+    * [x] vagrant (SSH errors)
+    * [ ] vagrant FS errors
     * [x] VirtualBox guest tools image (~NTP)
     * [x] etckeeper
     * [x] ufw
@@ -58,10 +64,15 @@ Tasks:
 * [ ] Create Vagrantfile for launching basebox
 
   * [x] vagrant init
-  * [ ] vagrant up (vagrant SSH errors)
-  * [ ] Configure DNS support (landrush)
+  * [x] vagrant up (vagrant SSH errors)
+  * [ ] Choose network topology
+
+    * [ ] Test vagrant tools
+    * [ ]
+    * [ ] Configure DNS support (landrush)
+
   * [ ] Configure Provisioning support (configsets)
-  
+
 * [ ] Create configsets
 
 * [ ] Launch basebox with configset
@@ -81,6 +92,15 @@ Tasks:
   etckeeper:
 
 
+[ ] Configmgmt Master configset (masterless)::
+
+  configmaster
+
+  policies
+
+  data
+
+
 [ ] Workstation configset::
 
   TODO: list installed packages (transitive reduction)
@@ -91,7 +111,7 @@ Tasks:
   nginx
 
 
-[ ] Gateway configset::
+[ ] Gateway/Router configset::
 
   networking:
     ip_forward: True
