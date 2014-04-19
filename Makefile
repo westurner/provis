@@ -97,6 +97,59 @@ vagrant_up:
 
 vagrant_rebuild: vagrant_destroy vagrant_up
 
+
+####################
+# salt
+#
+salt_bootstrap:
+	#wget -O - http://bootstrap.saltstack.org | sudo sh
+	sudo sh ./scripts/salt-bootstrap.sh
+
+salt_mount:
+	sudo mkdir -p /srv/salt
+	sudo mount -o bind ./salt /srv/salt
+
+## salt local
+salt_local_test:
+	sudo salt-call --local test.ping
+
+salt_local_highstate:
+	sudo salt-call --local state.highstate
+
+salt_local_highstate_debug:
+	sudo salt-call --local state.highstate -l debug
+
+## salt master/minion
+salt_start: salt_start_master salt_start_minion
+
+salt_stop: salt_stop_minion salt_stop_master
+
+salt_stop_minion:
+	if [ -f /etc/init.d/salt-minion ]; then \
+		sudo /etc/init.d/salt-minion stop; \
+	fi
+
+salt_start_minion:
+	if [ -f /etc/init.d/salt-minion ]; then \
+		sudo /etc/init.d/salt-minion start; \
+	fi
+
+salt_stop_master:
+	if [ -f /etc/init.d/salt-master ]; then \
+		sudo /etc/init.d/salt-master stop; \
+	fi
+
+salt_start_master:
+	if [ -f /etc/init.d/salt-master ]; then \
+		sudo /etc/init.d/salt-master start; \
+	fi
+
+salt_tail_minion:
+	sudo tail -f /var/log/salt/minion || true
+
+salt_tail_master:
+	sudo tail -f /var/log/salt/master || true
+
 #########################
 ## provis python package
 
