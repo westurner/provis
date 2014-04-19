@@ -82,6 +82,9 @@ Tasks:
 
 [ ] Basebox configset::
 
+  # currently accomplished by a sequence of shell scripts
+  # launched by the packer virtualbox-iso provisioner
+
   users:
    - root/vagrant
    - vagrant/vagrant
