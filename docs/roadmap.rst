@@ -2,7 +2,8 @@
 Roadmap
 =========
 
-Objectives:
+Objectives
+============
 
 * Generate new servers as easily as possible
 * Generate new servers from infrastructure as code
@@ -10,31 +11,159 @@ Objectives:
   providers
 
 
-Use Case:
+Use Cases
+-----------
 
+Testing
+~~~~~~~~~
 I want to test current configsets with Ubuntu 14.04, Vagrant, and
 VirtualBox; because I only have one physical workstation and am not yet
 prepared to switch over.
 
-
-Resources (Inputs):
-
-* OS ISOs
-
-  * http://releases.ubuntu.com/12.04/
-  * https://help.ubuntu.com/community/Installation/MinimalCDa
-
-    * Pull mini.iso from precise-updates (precise/mini.iso is broken)
-      https://bugs.launchpad.net/ubuntu/+source/net-retriever/+bug/1067934
-
-* Package Repositories
-
-  * Cached locally
-
-* Configsets
+Deployment Workflow
+~~~~~~~~~~~~~~~~~~~~~
+* Create and configure an image locally
+* Push to cloud
+* Paste together
 
 
-Tasks:
+Goals and Constraints
+------------------------
+**Tool Boundaries**
+
+There is a significant amount of overlap between
+Packer, Vagrant, VirtualBox, and Salt.
+
+In order to prevent having to re-implement features,
+the goal here is to stay flexible in regards to Virtualization
+and Cloud Hosting solutions.
+
+Clouds and Hypervisors
+~~~~~~~~~~~~~~~~~~~~~~~
+Packer supports various deployment targets ("builders"); for example:
+
+* VirtualBox
+* Docker
+* OpenStack
+* GCE
+* EC2
+* VMware
+* QEMU (KVM, Xen)
+* http://www.packer.io/docs/templates/builders.html
+
+Vagrant supports various hypervisors ("providers"):
+
+* VirtualBox
+* VMware
+* Hyper-V
+* https://github.com/mitchellh/vagrant/wiki/Available-Vagrant-Plugins#providers
+
+VirtualBox runs on many platforms with support for full NX/AMD-v virtualization:
+
+* Linux
+* OSX
+* Windows
+
+Salt can configure across a number of clouds/hypervisors:
+
+* KVM  http://docs.saltstack.com/en/latest/topics/tutorials/cloud_controller.html
+* http://docs.saltstack.com/en/latest/ref/clouds/all/index.html
+
+  * LXC (Cgroups)
+  * GCE (KVM)
+  * EC2 (Xen)
+  * Rackspace (KVM)
+  * OpenStack (https://wiki.openstack.org/wiki/HypervisorSupportMatrix)
+
+For local testing purposes, VirtualBox is probably the easiest target.
+
+Docker/LXC are nearly sufficient; but, in addition to relying upon the
+host kernel, some things just don't work:
+
+* Writing to `/etc/hosts`: https://github.com/dotcloud/docker/issues/2267
+* Apt-get upgrade: https://github.com/dotcloud/docker/issues/3934
+
+
+Networking
+~~~~~~~~~~~~
+Needs:
+
+* Gateway-routed topology ('bridged' public / private internal network)
+
+  * Single Point of Ingress/Egress
+  * Single Point of Failure
+  * Vagrant: multi-machine config with
+
+    * https://docs.vagrantup.com/v2/networking/public_network.html
+    * https://docs.vagrantup.com/v2/networking/private_network.html
+
+  * GCE Route Collections
+  * EC2 Network ACLs
+  * RackSpace Cloud Networks
+  * OpenStack Neutron
+
+* Attach an additional NIC
+
+  * Packer: virtualbox-iso provider (VBoxManager)
+  * Vagrant: Vagrantfile (VBoxManager)
+
+* DNS dependence
+
+Wants:
+
+* VLANs (OpenStack Neutron)
+
+Storage
+~~~~~~~~~
+
+Machine Image Storage
+++++++++++++++++++++++
+No SAN here.
+
+* Packer has builders for various clouds and virtualization solutions (GCE)a
+* Virtualbox: local filesystem: VDI, VMDK
+* Vagrant 'boxes'
+* EC2 AMI
+* GCE Images / 1
+* Docker Images / Registries
+* OpenStack Glance Images
+
+
+Block Storage
++++++++++++++++
+* VirtualBox supports (elastic) VDI and VMDK files
+* Latest Docker can use BTRFS
+* GCE Compute Engine Disks
+* EC2 EBS Elastic Block Store
+* RackSpace Block Storage
+* OpenStack Cinder (RBD, Gluster, Nexenta, NFS)
+
+
+Remote Filesystems
++++++++++++++++++++
+While remote filesystem access is mostly the wrong pattern for
+production, for development, it's nice to be able to work in local Gvim
+with synchronous reads and writes on a networked filesystem; though,
+arguably, the correct deployment pattern is a commit/push CI hook.
+
+* SSHFS is less than consistent; even when synchronized.
+* NFS is fairly standard and supports labeling
+
+  * Vagrant has NFS access tools
+  * NFS requires at least three ports
+  * I'm not very comfortable with mapping UIDs
+
+
+Object Storage
+++++++++++++++++
+* GCE Cloud Storage
+* AWS S3
+* OpenStack Swift
+* RackSpace Cloud Files
+
+
+Tasks
+======
 
 * [x] Download OS netboot ISOs
 
