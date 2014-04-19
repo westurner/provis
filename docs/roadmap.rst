@@ -35,7 +35,7 @@ There is a significant amount of overlap between
 Packer, Vagrant, VirtualBox, and Salt.
 
 In order to prevent having to re-implement features,
-the goal here is to stay flexible in regards to Virtualization
+one goal here is to stay flexible in regards to Virtualization
 and Cloud Hosting solutions.
 
 Clouds and Hypervisors
@@ -83,6 +83,15 @@ host kernel, some things just don't work:
 * Writing to `/etc/hosts`: https://github.com/dotcloud/docker/issues/2267
 * Apt-get upgrade: https://github.com/dotcloud/docker/issues/3934
 
+Vagrant can provision multiple VMs to lots of cloud providers.
+
+As a configuration management system, Salt can provision and configure
+VMs with lots of cloud providers.
+
+Instrumentation and scaling are primary concerns that should be kept in
+mind while developing templated configurations and application
+infrastructure topologies.
+
 
 Networking
 ~~~~~~~~~~~~
@@ -120,11 +129,11 @@ Machine Image Storage
 ++++++++++++++++++++++
 No SAN here.
 
-* Packer has builders for various clouds and virtualization solutions (GCE)a
+* Packer has builders for various clouds and virtualization solutions (GCE)
 * Virtualbox: local filesystem: VDI, VMDK
 * Vagrant 'boxes'
 * EC2 AMI
-* GCE Images / 1
+* GCE Images
 * Docker Images / Registries
 * OpenStack Glance Images
 
@@ -142,7 +151,7 @@ Block Storage
 Remote Filesystems
 +++++++++++++++++++
 While remote filesystem access is mostly the wrong pattern for
-production, for development, it's nice to be able to work in local Gvim
+production, for development, it's nice to be able to work in local GVim
 with synchronous reads and writes on a networked filesystem; though,
 arguably, the correct deployment pattern is a commit/push CI hook.
 
@@ -160,6 +169,17 @@ Object Storage
 * AWS S3
 * OpenStack Swift
 * RackSpace Cloud Files
+
+
+Operating Systems
+~~~~~~~~~~~~~~~~~~
+Ubuntu LTS 14.04 is just out with strong support for OpenStack.
+
+Debian is Debian.
+
+CentOS is more closely tracking RHEL than ever before.
+
+CoreOS and etcd are designed to scale.
 
 
 Tasks
