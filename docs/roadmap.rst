@@ -203,12 +203,11 @@ Tasks
 
     * [x] setup shell scripts (thanks!)
     * [x] vagrant (SSH errors)
-    * [ ] vagrant FS errors
+    * [x] vagrant FS errors
     * [x] VirtualBox guest tools image (~NTP)
     * [x] etckeeper
     * [x] ufw
-    * [ ] Apt.conf
-    * [ ] Hosts file
+    * [x] Apt.conf (apt proxy copied from preseed: apt.create.wrd.nu)
 
 * [ ] Create Vagrantfile for launching basebox
 
@@ -216,11 +215,15 @@ Tasks
   * [x] vagrant up (vagrant SSH errors)
   * [ ] Choose network topology
 
-    * [ ] Test vagrant tools
-    * [ ]
+    * [x] Test vagrant multi-guest vm.network + bridged gateway
+    * [ ] Determine why/whether there are any (dis)advantages to
+          NAT + Bridged + Intnet (why is there a default NAT adapter?)
     * [ ] Configure DNS support (landrush)
 
   * [ ] Configure Provisioning support (configsets)
+
+    * [ ] Hosts file (salt)
+    * [ ] Resolv.conf
 
 * [ ] Create configsets
 

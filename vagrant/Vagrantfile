@@ -12,6 +12,31 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   # Every Vagrant virtual environment requires a box to build off of.
   config.vm.box = "pvbx"
 
+  # Do not share the vagrant folder
+  # config.vm.synced_folder ".", "/vagrant", :disabled => true
+
+  # config.ssh.username = 
+  #  config.ssh.password = 
+  #  config.ssh.insert_key = true
+  # config.ssh.private_key_path = './privkey'
+  # config.ssh.private_key_path = ['./privkey', './vagrantkey']
+  # config.ssh.private_key_path =
+  # config.ssh.port = 22
+  #
+
+  config.vm.define :rod do |config|
+    # Hot Rod Kimble ("rod" <> "door")
+    #rod.vm.box = "pvbx"
+    config.vm.hostname = "rod"
+    config.vm.network "public_network", :bridge => "eth0", :mac => "222222222228"
+    config.vm.network "private_network", ip: "10.10.0.2", virtualbox__intnet: "int"
+  end
+
+  config.vm.define :salt do |config|
+    config.vm.hostname = "salt"
+    config.vm.network "private_network", ip: "10.10.0.20", virtualbox__intnet: "int"
+  end
+
   # Disable automatic box update checking. If you disable this, then
   # boxes will only be checked for updates when the user runs
   # `vagrant box outdated`. This is not recommended.

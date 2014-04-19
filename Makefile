@@ -95,6 +95,7 @@ vagrant_up:
 	cd $(VAGRANT_SRC_PATH) && \
 		vagrant up
 
+vagrant_rebuild: vagrant_destroy vagrant_up
 
 #########################
 ## provis python package
