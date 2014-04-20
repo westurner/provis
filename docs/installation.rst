@@ -40,6 +40,8 @@ Install Python requirements::
     cd ./provis
     pip install -r requirements.txt
 
+.. _virtualenv: http://www.virtualenv.org/en/latest/
+.. _virtualenvwrapper: http://virtualenvwrapper.readthedocs.org/en/latest/
 
 Packer, Vagrant, Virtualbox, Salt
 =================================
