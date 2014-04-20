@@ -30,12 +30,18 @@ all: setup packer_vbox vagrant_vbox
 
 ## Setup
 
-setup: setup_tools setup_download_isos packer_setup vagrant_setup
+setup: setup_provis setup_tools setup_download_isos packer_setup vagrant_setup
+
+setup_provis:
+	pip install -r ./requirements.txt
+	python setup.py develop
 
 setup_tools:
 	bash ./scripts/setup_tools.sh
 
-setup_download_isos:
+setup_download_isos: setup_download_isos_ubuntu
+
+setup_download_isos_ubuntu:
 	mkdir -p $(ISOS_PATH)/ubuntu && \
 	cd $(ISOS_PATH)/ubuntu && \
 	bash ./scripts/download_ubuntu_isos.sh
@@ -101,6 +107,8 @@ vagrant_rebuild: vagrant_destroy vagrant_up
 ####################
 # salt
 #
+salt_setup: salt_bootstrap salt_mount
+
 salt_bootstrap:
 	#wget -O - http://bootstrap.saltstack.org | sudo sh
 	sudo sh ./scripts/salt-bootstrap.sh
@@ -109,7 +117,6 @@ salt_mount:
 	sudo mkdir -p /srv/salt
 	sudo mount -o bind ./salt /srv/salt
 
-## salt local
 salt_local_test:
 	sudo salt-call --local test.ping
 
@@ -119,7 +126,6 @@ salt_local_highstate:
 salt_local_highstate_debug:
 	sudo salt-call --local state.highstate -l debug
 
-## salt master/minion
 salt_start: salt_start_master salt_start_minion
 
 salt_stop: salt_stop_minion salt_stop_master
@@ -149,6 +155,15 @@ salt_tail_minion:
 
 salt_tail_master:
 	sudo tail -f /var/log/salt/master || true
+
+
+########################
+## provis tests
+test_provis:
+	py.test -v ./tests/provis_tests.py
+
+test_all: test test_provis
+
 
 #########################
 ## provis python package
@@ -192,13 +207,20 @@ coverage:
 	coverage html
 	open htmlcov/index.html
 
+docs_setup:
+	pip install sphinx sphinxcontrib-napoleon
+
 docs:
-	rm -f docs/provis.rst
+	rm -f docs/api.rst
 	rm -f docs/modules.rst
-	sphinx-apidoc -o docs/ provis
+	# https://bitbucket.org/birkenfeld/sphinx/issue/1456/apidoc-add-a-m-option-to-put-module
+	# https://bitbucket.org/westurner/sphinx/branch/apidoc_output_order
+	sphinx-apidoc -M --no-toc --no-headings -o docs/ provis
+	mv docs/provis.rst docs/api.rst
+	sed -i 's/provis package/API/' docs/api.rst
 	$(MAKE) -C docs clean
 	$(MAKE) -C docs html
-	open docs/_build/html/index.html
+	# x-www-browser docs/_build/html/index.html
 
 release: clean
 	python setup.py sdist upload
@@ -209,4 +231,11 @@ dist: clean
 	python setup.py bdist_wheel
 	ls -l dist
 
+tox:
+	tox
 
+docs_test:
+	tox -e docs
+
+style:
+	tox -e style

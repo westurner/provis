@@ -1,2 +1,9 @@
 wheel==0.22.0
+pathlib
+URLObject
+requests
 BeautifulSoup4
+pytest
+pytest-capturelog
+structlog
+sarge

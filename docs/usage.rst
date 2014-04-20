@@ -2,6 +2,9 @@
 Usage
 ========
 
-To use provis in a project::
+Makefile
+=========
+The ``Makefile`` lists often-repeated commands and their task dependencies.
 
-	import provis
+.. include:: ../Makefile
+   :code: makefile

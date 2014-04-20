@@ -9,14 +9,15 @@ Welcome to provis's documentation!
 Contents:
 
 .. toctree::
-   :maxdepth: 2
+   :maxdepth: 4
 
    readme
    installation
    usage
-   roadmap
-   contributing
    tools
+   roadmap
+   api
+   contributing
    authors
    history
 

@@ -16,6 +16,13 @@ History
 * Imported packer/scripts from `cargomedia/vagrant-boxes
   <https://github.com/cargomedia/vagrant-boxes>`_
 * Adapted, modified, and tested Packer JSON, preseed, and scripts
+* Created Vagrantfile
+* Created initial salt policies (webserver package, service, and ufw cmd)
+* Created provis.net utilities: ICMP, Ports, Banners; socket, sarge, structlog)
+* Created vm tests with net utilities
+* Switched to py.test w/ pytest-capturelog (setup.py, runtests)
+* Updated tox.ini (py.test, style (flake8), docs)
+* Updated Makefile
 
 .. _cookiecutter: https://github.com/audreyr/cookiecutter
 .. _cookiecutter-pypackage: https://github.com/audreyr/cookiecutter-pypackage

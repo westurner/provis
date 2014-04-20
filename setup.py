@@ -6,9 +6,9 @@ import sys
 
 
 try:
-    from setuptools import setup
+    from setuptools import setup, Command
 except ImportError:
-    from distutils.core import setup
+    from distutils.core import setup, Command
 
 if sys.argv[-1] == 'publish':
     os.system('python setup.py sdist upload')
@@ -17,10 +17,24 @@ if sys.argv[-1] == 'publish':
 readme = open('README.rst').read()
 history = open('HISTORY.rst').read().replace('.. :changelog:', '')
 
+class PyTest(Command):
+    user_options = []
+    def initialize_options(self):
+        pass
+
+    def finalize_options(self):
+        pass
+
+    def run(self):
+        import sys,subprocess
+        errno = subprocess.call([sys.executable, 'runtests.py', '-v'])
+        raise SystemExit(errno)
+
 setup(
     name='provis',
     version='0.1.0',
-    description='Infrastructure Provisioning Scripts and Configuration Ssets',
+    description=(
+        'Infrastructure Provisioning Scripts, Configuration, and Tests'),
     long_description=readme + '\n\n' + history,
     author='Wes Turner',
     author_email='wes@wrd.nu',
@@ -47,4 +61,6 @@ setup(
         'Programming Language :: Python :: 3.3',
     ],
     test_suite='tests',
+    tests_require=['pytest', 'pytest-capturelog'],
+    cmdclass = {'test': PyTest},
 )

@@ -56,7 +56,7 @@ Vagrant supports various hypervisors ("providers"):
 * VirtualBox
 * VMware
 * Hyper-V
-* https://github.com/mitchellh/vagrant/wiki/Available-Vagrant-Plugins#providers
+* `<https://github.com/mitchellh/vagrant/wiki/Available-Vagrant-Plugins#providers>`_
 
 VirtualBox runs on many platforms with support for full NX/AMD-v virtualization:
 
@@ -185,6 +185,16 @@ CoreOS and etcd are designed to scale.
 Tasks
 ======
 
+* [x] Create templated pypackage
+
+* [x] Create documentation pages
+
+  * [x] Tools (homepage, documentation, source)
+  * [x] Roadmap
+  * [x] Installation
+  * [x] Usage (Makefile)
+  * [ ] Contributing
+
 * [x] Download OS netboot ISOs
 
 * [x] Configure package mirrors
@@ -224,6 +234,13 @@ Tasks
 
     * [ ] Hosts file (salt)
     * [ ] Resolv.conf
+
+* [ ] Create basic functional network tests
+
+  * [*] ICMP
+  * [*] TCP Ports
+  * [*] TCP Banners
+  * [*] HTTP GET 200 OK
 
 * [ ] Create configsets
 

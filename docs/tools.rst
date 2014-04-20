@@ -4,15 +4,15 @@ Tools
 
 Bash
 ======
-| Wikipedia: https://en.wikipedia.org/wiki/Bash_(Unix_shell)
+| Wikipedia: `<https://en.wikipedia.org/wiki/Bash_(Unix_shell)>`_
 | Homepage: http://www.gnu.org/software/bash/
 | Docs: https://www.gnu.org/software/bash/manual/
-| Source: git://git.savannah.gnu.org/bash.git
+| Source: `<git://git.savannah.gnu.org/bash.git>`_
 
 
 Git
 ====
-| Wikipedia: https://en.wikipedia.org/wiki/Git_(software)
+| Wikipedia: `<https://en.wikipedia.org/wiki/Git_(software)>`_
 | Homepage: http://git-scm.com/
 | Docs: http://git-scm.com/documentation
 | Source: https://github.com/git/git
@@ -22,7 +22,7 @@ Git
 
 Go
 ===
-| Wikipedia: https://en.wikipedia.org/wiki/Go_(programming_language)
+| Wikipedia: `<https://en.wikipedia.org/wiki/Go_(programming_language)>`_
 | Homepage: http://golang.org/
 | Docs: http://golang.org/doc/
 | Source: https://code.google.com/p/go/
@@ -31,7 +31,7 @@ Go
 Linux
 =======
 | Wikipedia: https://en.wikipedia.org/wiki/Linux
-| Homepage: http://www.kernel.org
+| Homepage: https://www.kernel.org
 | Docs: https://www.kernel.org/doc/
 | Source: https://github.com/torvalds/linux
 
@@ -45,7 +45,7 @@ Packer
 
 Puppet
 =======
-| Wikipedia: https://en.wikipedia.org/wiki/Puppet_(software)
+| Wikipedia: `<https://en.wikipedia.org/wiki/Puppet_(software)>`_
 | Homepage: https://puppetlabs.com/
 | Docs: http://docs.puppetlabs.com/
 | Source: https://github.com/puppetlabs/puppet
@@ -53,31 +53,31 @@ Puppet
 
 Python
 ========
-| Wikipedia: https://en.wikipedia.org/wiki/Python_(programming_language)
+| Wikipedia: `<https://en.wikipedia.org/wiki/Python_(programming_language)>`_
 | Homepage: https://www.python.org
-| Docs: http://docs.python.org/
-| Source: https://hg.python.org/cpython
+| Docs: https://docs.python.org/2/
+| Source: http://hg.python.org/cpython
 
 
 Salt
 =====
-| Wikipedia: https://en.wikipedia.org/wiki/Salt_(software)
+| Wikipedia: `<https://en.wikipedia.org/wiki/Salt_(software)>`_
 | Homepage: http://www.saltstack.com
-| Docs: http://docs.saltstack.com/
+| Docs: http://docs.saltstack.com/en/latest/
 | Source: https://github.com/saltstack/salt
 
 
 Ruby
 =====
-| Wikipedia: https://en.wikipedia.org/wiki/Ruby_(programming_language)
-| Homepage: http://www.ruby-lang.org/
+| Wikipedia: `<https://en.wikipedia.org/wiki/Ruby_(programming_language)>`_
+| Homepage: https://www.ruby-lang.org/
 | Docs: https://www.ruby-lang.org/en/documentation/
 | Source: http://svn.ruby-lang.org/repos/ruby/trunk
 
 
 Ubuntu
 ========
-| Wikipedia: https://en.wikipedia.org/wiki/Ubuntu_(operating_system)
+| Wikipedia: `<https://en.wikipedia.org/wiki/Ubuntu_(operating_system)>`_
 | Homepage: http://www.ubuntu.com/
 | Docs: https://help.ubuntu.com/
 | Source: http://archive.ubuntu.com/
@@ -86,15 +86,15 @@ Ubuntu
 
 Vagrant
 ========
-| Wikipedia: https://en.wikipedia.org/wiki/Vagrant_(software)
+| Wikipedia: `<https://en.wikipedia.org/wiki/Vagrant_(software)>`_
 | Homepage: http://www.vagrantup.com/
-| Docs: http://docs.vagrantup.com/
+| Docs: http://docs.vagrantup.com/v2/
 | Source: https://github.com/mitchellh/vagrant
 
 
 VirtualBox
 ===========
 | Wikipedia: https://en.wikipedia.org/wiki/VirtualBox
-| Homepage: http://www.virtualbox.org/
+| Homepage: https://www.virtualbox.org/
 | Docs: https://www.virtualbox.org/wiki/Documentation
-| Source: http://www.virtualbox.org/svn/vbox/trunk
+| Source: `<svn://www.virtualbox.org/svn/vbox/trunk>`_
