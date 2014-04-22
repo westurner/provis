@@ -1,0 +1,65 @@
+[submodule "pillar"]
+path = pillar
+url = 
+
+
+[submodule "salt_formulas_docker-formula"]
+path = salt/formulas/docker-formula
+url = ssh://git@github.com/saltstack-formulas/docker-formula
+
+[submodule "salt_formulas_tmux-formula"]
+path = salt/formulas/tmux-formula
+url = ssh://git@github.com/saltstack-formulas/tmux-formula
+
+[submodule "salt_formulas_resolver-formula"]
+path = salt/formulas/resolver-formula
+url = ssh://git@github.com/saltstack-formulas/resolver-formula
+
+[submodule "salt_formulas_sun-java-formula"]
+path = salt/formulas/sun-java-formula
+url = ssh://git@github.com/saltstack-formulas/sun-java-formula
+
+[submodule "salt_formulas_postgres-formula"]
+path = salt/formulas/postgres-formula
+url = ssh://git@github.com/saltstack-formulas/postgres-formula
+
+[submodule "salt_formulas_salt-formula"]
+path = salt/formulas/salt-formula
+url = ssh://git@github.com/saltstack-formulas/salt-formula
+
+[submodule "salt_formulas_sudoers-formula"]
+path = salt/formulas/sudoers-formula
+url = ssh://git@github.com/saltstack-formulas/sudoers-formula
+
+[submodule "salt_formulas_nginx-formula"]
+path = salt/formulas/nginx-formula
+url = ssh://git@github.com/saltstack-formulas/nginx-formula
+
+[submodule "salt_formulas_openssh-formula"]
+path = salt/formulas/openssh-formula
+url = ssh://git@github.com/saltstack-formulas/openssh-formula
+
+[submodule "salt_formulas_bind-formula"]
+path = salt/formulas/bind-formula
+url = ssh://git@github.com/saltstack-formulas/bind-formula
+
+[submodule "salt_formulas_mysql-formula"]
+path = salt/formulas/mysql-formula
+url = ssh://git@github.com/saltstack-formulas/mysql-formula
+
+[submodule "salt_formulas_ntp-formula"]
+path = salt/formulas/ntp-formula
+url = ssh://git@github.com/saltstack-formulas/ntp-formula
+
+[submodule "salt_formulas_ruby-formula"]
+path = salt/formulas/ruby-formula
+url = ssh://git@github.com/saltstack-formulas/ruby-formula
+
+[submodule "salt_formulas_users-formula"]
+path = salt/formulas/users-formula
+url = ssh://git@github.com/saltstack-formulas/users-formula
+
+[submodule "salt_formulas_hostsfile-formula"]
+path = salt/formulas/hostsfile-formula
+url = ssh://git@github.com/saltstack-formulas/hostsfile-formula
+
