@@ -225,10 +225,9 @@ Tasks
   * [x] vagrant up (vagrant SSH errors)
   * [ ] Choose network topology
 
-    * [x] Test vagrant multi-guest vm.network + bridged gateway
-    * [ ] Determine why/whether there are any (dis)advantages to
-          NAT + Bridged + Intnet (why is there a default NAT adapter?)
-    * [ ] Configure DNS support (landrush)
+    * [x] Test vagrant multi-guest vm.network + bridged gateway (vagrant adds 
+      a default NAT Adapter 1)
+    * [ ] Configure DNS support (landrush or salt config ?)
 
   * [ ] Configure Provisioning support (configsets)
 
@@ -244,10 +243,10 @@ Tasks
 
 * [ ] Create configsets
 
-* [ ] Launch basebox with configset
+* [x] Launch basebox with configset
 
-  * [ ] Provision
-  * [ ] Configset
+  * [x] Provision w/ salt --local (Vagrant/VBox NFS mounts)
+  * [ ] Provision from salt master (DNS/hosts, keys)
 
 [ ] Basebox configset::
 

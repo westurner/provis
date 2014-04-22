@@ -6,7 +6,9 @@
     "hostname": "pvbx",
     "aptproxy": "http://apt.create.wrd.nu:23142",
     "tasksels": "ssh-server",
-    "taskseld": "none"
+    "taskseld": "none",
+    "saltmaster": "salt",
+    "saltversion": "-g https://github.com/saltstack/salt git develop"
   },
   "builders": [
     {
@@ -65,12 +67,25 @@
         "scripts/cleanup.sh",
         "scripts/virtualbox-cleanup.sh"
       ],
-      "execute_command": "{{.Vars}} sudo -E sh '{{.Path}}'",
+      "execute_command": "echo '{{user `ssh_pass`}}' | {{.Vars}} sudo -E sh '{{.Path}}'",
       "override": {
         "virtualbox": {
           "execute_command": "echo '{{user `ssh_pass`}}' | {{.Vars}} sudo -E -S sh '{{ .Path }}'"
         }
       }
+    },
+    {
+      "type": "shell",
+      "scripts": [
+        "scripts/bootstrap-salt.sh"
+      ],
+      "execute_command": "chmod +x '{{.Path}}' && echo '{{user `ssh_pass`}}' | sudo -E -S {{.Path}} -X -A {{user `saltmaster`}} {{user `saltversion`}}"
+    },
+    {
+      "type": "shell",
+      "inline": [
+        "echo '{{user `ssh_pass`}}' | sudo -S test -x /etc/init.d/salt-minion && /etc/init.d/salt-minion stop|| echo '/etc/init.d/salt-minion is not in place'"
+      ]
     }
   ],
 
