@@ -130,7 +130,7 @@ Machine Image Storage
 No SAN here.
 
 * Packer has builders for various clouds and virtualization solutions (GCE)
-* Virtualbox: local filesystem: VDI, VMDK
+* VirtualBox: local filesystem: VDI, VMDK
 * Vagrant 'boxes'
 * EC2 AMI
 * GCE Images
@@ -160,7 +160,6 @@ arguably, the correct deployment pattern is a commit/push CI hook.
 
   * Vagrant has NFS access tools
   * NFS requires at least three ports
-  * I'm not very comfortable with mapping UIDs
 
 
 Object Storage
