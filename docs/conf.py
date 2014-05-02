@@ -40,7 +40,46 @@ import provis
 extensions = [
     'sphinx.ext.autodoc',
     'sphinx.ext.viewcode',
-    'sphinxcontrib.napoleon']
+    'sphinxcontrib.napoleon',
+]
+
+try:
+    import sphinx_git
+    extensions.append('sphinx_git')
+except ImportError:
+    pass
+    # TODO
+
+
+try:
+    import sphinxcontrib.issuetracker
+    extensions.append('sphinxcontrib.issuetracker')
+    issuetracker = 'github'
+    issuetracker_project = 'westurner/provis'
+except ImportError:
+    pass
+    # TODO
+
+try:
+    import changelog
+    extensions.append('changelog')
+    # section names - optional
+    changelog_sections = ["general", "rendering", "tests"]
+
+    # tags to sort on inside of sections - also optional
+    changelog_inner_tag_sort = ["feature", "bug"]
+
+    changelog_url = 'https://github.com/westurner/provis'
+
+    # how to render changelog links - these are plain
+    # python string templates, ticket/pullreq/changeset number goes
+    # in "%s"
+    changelog_render_ticket = "%s/issue/%%s" % changelog_url
+    changelog_render_pullreq = "%s/pullrequest/%%s" % changelog_url
+    changelog_render_changeset = "%s/changeset/%%s" % changelog_url
+except ImportError:
+    pass
+    # TODO
 
 autodoc_member_order = 'bysource'
 
@@ -109,17 +148,24 @@ pygments_style = 'sphinx'
 
 # -- Options for HTML output ---------------------------------------------------
 
-# The theme to use for HTML and HTML Help pages.  See the documentation for
-# a list of builtin themes.
-html_theme = 'default'
+# see: http://git.io/Pk7SGA
+# on_rtd is whether we are on readthedocs.org, this line of code grabbed from docs.readthedocs.org
+on_rtd = os.environ.get('READTHEDOCS', None) == 'True'
+
+if not on_rtd:  # only import and set the theme if we're building docs locally
+    import sphinx_rtd_theme
+    # The theme to use for HTML and HTML Help pages.  See the documentation for
+    # a list of builtin themes.
+    html_theme = 'sphinx_rtd_theme'
+    # Add any paths that contain custom themes here, relative to this directory.
+    html_theme_path = [sphinx_rtd_theme.get_html_theme_path()]
+
+html_theme = 'sphinx_rtd_theme'
 
 # Theme options are theme-specific and customize the look and feel of a theme
 # further.  For a list of options available for each theme, see the
 # documentation.
 #html_theme_options = {}
-
-# Add any paths that contain custom themes here, relative to this directory.
-#html_theme_path = []
 
 # The name for this set of Sphinx documents.  If None, it defaults to
 # "<project> v<release> documentation".

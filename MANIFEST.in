@@ -1,5 +1,47 @@
+#!/usr/bin/env make
+
+# Provis MANIFEST.in file
+# Specifies which files to include in a sdist
+# See: pip install check-manifest && check-manifest
+
+include .gitignore
+include .gitmodules
+include .travis.yml
 include AUTHORS.rst
 include CONTRIBUTING.rst
 include HISTORY.rst
 include LICENSE
+include LICENSE.MIT.cargomedia
+include MANIFEST.in
+include Makefile
 include README.rst
+include requirements-docs.txt
+include requirements.txt
+include runtests.py
+include tox.ini
+recursive-include * .gitmodules
+recursive-include scripts *
+recursive-include tests *
+recursive-include docs *
+
+recursive-include packer *
+prune packer/packer_cache
+prune packer/output-virtualbox
+
+recursive-include vagrant Vagrantfile
+
+recursive-include salt *
+recursive-exclude salt/formulas/*/.git *
+
+
+recursive-include pillar *
+prune pillar/.git
+
+
+recursive-exclude * __pycache__ *.py[co] *.gitignore *.pickle *.doctree
+recursive-exclude * *.iso *.box
+prune .doctree
+prune .git
+prune .hg
+
+graft salt/base/heka

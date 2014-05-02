@@ -14,11 +14,18 @@ if sys.argv[-1] == 'publish':
     os.system('python setup.py sdist upload')
     sys.exit()
 
-readme = open('README.rst').read()
-history = open('HISTORY.rst').read().replace('.. :changelog:', '')
+datadir = os.path.dirname(__file__)
+
+with open(os.path.join(datadir, 'README.rst')) as f:
+    readme = f.read()
+
+with open(os.path.join(datadir, 'HISTORY.rst')) as f:
+    history = f.read().replace('.. :changelog:', '')
+
 
 class PyTest(Command):
     user_options = []
+
     def initialize_options(self):
         pass
 
@@ -26,9 +33,15 @@ class PyTest(Command):
         pass
 
     def run(self):
-        import sys,subprocess
+        import sys
+        import subprocess
         errno = subprocess.call([sys.executable, 'runtests.py', '-v'])
         raise SystemExit(errno)
+
+#data_files = [(path, [os.path.join(path, f) for f in files])
+#    for dir, dirs, files in os.walk(datadir)]
+
+#print(data_files)
 
 setup(
     name='provis',
@@ -44,6 +57,7 @@ setup(
     ],
     package_dir={'provis': 'provis'},
     include_package_data=True,
+    #data_files = data_files,
     install_requires=[
     ],
     license="BSD",

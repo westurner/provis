@@ -1,3 +1,8 @@
--r requirements.txt
 sphinx
 sphinxcontrib-napoleon
+sphinxcontrib-bibtex
+sphinx_rtd_theme
+#sphinx-git
+#-e git+https://github.com/OddBloke/sphinx-git#egg=sphinx-git
+changelog
+-e git+https://github.com/lunaryorn/sphinxcontrib-issuetracker#egg=sphinxcontrib-issuetracker

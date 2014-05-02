@@ -3,21 +3,25 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-Welcome to provis's documentation!
-======================================
+Provis Project Documentation 
+==============================
 
 Contents:
 
 .. toctree::
-   :maxdepth: 4
+   :maxdepth: 5
 
    readme
-   installation
-   usage
+   goals
+   products
+   activities
+   patterns
+   techniques
    tools
-   roadmap
+   scripts
    api
    contributing
+
    authors
    history
 
