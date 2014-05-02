@@ -6,6 +6,8 @@
 Provis Project Documentation 
 ==============================
 
+.. include:: readme.rst
+
 Contents:
 
 .. toctree::
@@ -19,8 +21,8 @@ Contents:
    techniques
    tools
    scripts
-   api
    contributing
+   api
 
    authors
    history

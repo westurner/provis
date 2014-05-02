@@ -1,5 +1,5 @@
 ===============================
-provis
+README
 ===============================
 
 .. ..  image:: https://badge.fury.io/py/provis.png
@@ -11,41 +11,72 @@ provis
 .. ..  image:: https://pypip.in/d/provis/badge.png
 ..         :target: https://crate.io/packages/provis?version=latest
 
+`Docs <https://provis.readthedocs.org/>`_ |
+`Github <https://github.com/westurner/provis>`_ |
+`Issues <https://github.com/westurner/provis/issues>`_
+
+Provis
+========
 
 Infrastructure Provisioning Scripts and Configuration Sets
 
-* Free software: BSD license
-* Documentation: http://provis.rtfd.org
+* Free software: `BSD license <#license>`_
+* Documentation: http://provis.readthedocs.org/
 * Source: https://github.com/westurner/provis
 
-* See: :ref:`Products <products>`
-
 This project :ref:`scripts` a number of helpful
-:ref:`tools` to produce :ref:`products`
+:ref:`tools` to automate :ref:`activities`
+that produce :ref:`products`
 which satisfy the :ref:`goals`.
+
+The :ref:`Provis Package <provis-package>` is one :ref:`product
+<products>` of this project.
+
+Within the :ref:`Provis Package <provis-package>` is a :ref:`Makefile`
+containing untold secrets of the universe.
+
+
+.. include:: goals.rst
 
 
 Installation
 ============
-* :ref:`Install requirements`
-* :ref:`Makefile <makefile>`
+* `Install build requirements`_
+* `Install the Provis Package`_
 
-Requirements
---------------
-* Python 2.6 or newer
-* make
-* sudo
-* pip
-* Ubuntu 12.04 LTS
+Install Build Requirements
+----------------------------
 
+Ubuntu 12.04 LTS
+~~~~~~~~~~~~~~~~~~
+Tested with:
 
-Provis Python Package
-----------------------
-Create a `virtualenv`_ with `virtualenvwrapper`_ (optional)::
+* :ref:`Ubuntu` 12.04 LTS
+* Install :ref:`Python` 2.6 or newer::
+
+    apt-get install python
+
+* Install :ref:`make`::
+
+    apt-get install make
+
+* Install :ref:`pip`::
+
+    apt-get install pip
+    pip install --upgrade pip
+
+* Install :ref:`virtualenv` and :ref:`virtualenvwrapper` (optional)::
+
+    pip install virtualenv virtualenvwrapper
+
+  Create a `virtualenv`_ with `virtualenvwrapper`_ (optional)::
 
     mkvirtualenv provis
     workon provis
 
+
+Install the Provis Package
+----------------------------
 Clone and install the package from source::
 
     pip install -e ssh://git@github.com/westurner/provis#egg=provis
@@ -54,13 +85,12 @@ Or, clone the repository and manually install::
 
     ## clone
     git clone ssh://git@github.com/westurner/provis
-    # -or-
     git clone https://github.com/westurner/provis
 
-    ## install
     cd ./provis
+
+    ## install
     python setup.py develop  # creates a provis.egg-link in site-packages
-    # -or-
     python setup.py install  # copies the binary dist to site-packages
 
 Install Python requirements::
@@ -72,27 +102,36 @@ Install Python requirements::
 .. _virtualenvwrapper: http://virtualenvwrapper.readthedocs.org/en/latest/
 
 
-Debian/Ubuntu
---------------
-Sudo is necessary.
+Usage
+=======
 
-Install Make::
+Run the Makefile
+-----------------
 
-    sudo apt-get install make
+Run ``make`` with the :ref:`Makefile`::
 
-Review the project Makefile::
-
-    less ./Makefile
-
-Run Make::
-
-    make setup
-    #-> make setup_provis
-    #-> make setup_tools (scripts/setup_tools.sh)
-    #-> make setup_download_isos
-    #-> make packer_setup
-    #-> make vagrant_setup
-    #-> make salt_setup
+    cd ./provis
+    make
+    make help
 
 
+Patterns
+==========
+
+Techniques
+============
+
+Tools
+=======
+
+Scripts
+=========
+
+Contributing
+==============
+
+License
+=========
+
+.. include:: ../LICENSE
 

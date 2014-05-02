@@ -1,10 +1,14 @@
+
+.. _activities:
+
 ============
 Activities
 ============
 
-
 Create a new repository
 -------------------------
+See :ref:`Contributing`.
+
 * [x] Create a new git repository
 
   * [x] git init
@@ -18,35 +22,39 @@ Create a new repository
 Create a new package
 ----------------------
 
-* [x] Create templated python package
+* [x] Create templated :ref:`python` package
 
   * [x] pip install cookiecutter
   * [x] ``cookiecutter`` https://github.com/audreyr/cookiecutter-pypackage.git
+  * [x] README.rst
+  * [x] AUTHORS.rst -- Authors / Contributors
+  * [x] CONTRIBUTING.rst -- 
 
-* [x] Create documentation pages
 
-  * [x] ``README.rst``
-  * [x] ``AUTHORS.rst`` -- Authors / Contributors
-  * [x] docs/conf.py -- sphinx configuration
-  * [x] docs/Makefile -- sphinx Makefile)
-  * [x] docs/index.rst -- sphinx ReStructuredText Index
-  - [x] docs/authors.rst -- Credits
+
+Create project documentation
+-----------------------------
+* [x] Create :ref:`Sphinx` documentation set
+
+  * [x] docs/conf.py -- :ref:`sphinx` build configuration
+  * [x] docs/Makefile -- :ref:`sphinx` :ref:`Make` file
+  * [x] docs/index.rst -- :ref:`sphinx` :ref:`ReStructuredText` Index
+  * [x] docs/readme.rst -- :ref:`sphinx` README
+  * [x] docs/authors.rst -- Credits
   * [x] docs/tools.rst -- Tools Catalog Notes (homepage, documentation, source)
   * [x] docs/installation.rst -- Installation Procedure
   * [x] docs/usage.rst -- Usage (Makefile)
-  * [ ] Contributing
 
+* [x] Create Seven Layer Model pages
 
-Create seven layer model documentation
-----------------------------------------
-- [x] docs/goals.rst
-- [x] docs/products.rst
-- [x] docs/activities.rst
-- [x] docs/patterns.rst
-- [x] docs/techniques.rst
-- [x] docs/tools.rst
-- [x] docs/scripts.rst
-- [x] Add {...} to docs/index.rst
+  + [x] docs/goals.rst
+  + [x] docs/products.rst
+  + [x] docs/activities.rst
+  + [x] docs/patterns.rst
+  + [x] docs/techniques.rst
+  + [x] docs/tools.rst
+  + [x] docs/scripts.rst
+  + [x] Add {...} to docs/index.rst
 
 
 Setup host machine
@@ -62,6 +70,15 @@ Setup host machine
 
   * [x] Document Homepage, Source, Docs (docs/tools.rst)
   * [x] Script installation (scripts/install_tools.sh)
+
+    * [x] Install Python, Ruby, Go, Git, Wget::
+
+        apt-get install python ruby golang-go git wget
+
+    * [x] Install :ref:`Vagrant`
+    * [x] Install :ref:`Packer`
+    * [x] Install :ref:`Docker`
+    * [x] Install :ref:`VirtualBox`
 
 
 Configure networking and DNS
@@ -104,7 +121,7 @@ Create virtual image
     * [x] Apt.conf (apt proxy copied from preseed: apt.create.wrd.nu)
 
 
-Provision virtual image instance
+Provision vagrant image instance
 ----------------------------------
 * [ ] Create Vagrantfile for launching VirtualBox Vagrant basebox
 
@@ -123,35 +140,53 @@ Provision virtual image instance
 Bootstrap salt minion
 ------------------------
 
-* [x] Set minion id::
+* [x] `Bootstrap salt installation <http://docs.saltstack.com/en/latest/topics/tutorials/salt_bootstrap.html>`_
+
+* [x] Configure salt minion ID
+
+  * [ ] /etc/hosts "salt"
+  * [ ] Set minion ID in /etc/salt/minion
+  * [ ] Set minion ID in /etc/salt/minion_id::
           
-    hostname --fqdn | sudo tee /etc/salt/minion_id
+      hostname --fqdn | sudo tee /etc/salt/minion_id
 
-* [x] Mount filesystems::
+* [ ] Configure for standalone minion setup
 
-    # Configure Vagrantfile
-    # mount nfs /srv/salt
-    # mount nfs /srv/pillar
+  * [ ] Check `file_roots` and `pillar_roots` in /etc/salt/minion
+  * [ ] Verify that salt files are in /srv/salt and /srv/pillar
 
-* [x] Run provisioner::
+* [ ] Configure for master/minion setup
 
-    salt-call --local state.highstate
+  * [ ] DNS resolve 'salt'
+  * [ ] Set ``master:`` in /etc/salt/minion.conf
+  * [ ] Pair salt minion/master keys::
 
-* [ ] Provision from salt masterless
+      salt-key --help
+
+* [x] Run salt
+
+  * [x] Run salt locally as a standalone minion::
+
+      salt-call --local grains.items
+
+  * [ ] Run salt from master::
+
+      salt 'minion_id' grains.items
+
+  * [ ] Run salt over SSH::
+
+      salt-ssh 'minion_id' grains.items
 
 
 Bootstrap salt master
 -----------------------
 
-* [ ] Provision from salt master (DNS/hosts, keys)
+* [x] `Bootstrap salt installation <http://docs.saltstack.com/en/latest/topics/tutorials/salt_bootstrap.html>`_
 
-  + [ ] Bootstrap salt master
-  + [ ] /etc/salt/minion.conf ``master: salt``
-  + [ ] /etc/salt/minion.d/\*.conf
+  * [ ] TODO
 
 
-
-Create salt configsets
+Create salt environment
 ------------------------
 * salt/top.sls
 * pillar/top.sls

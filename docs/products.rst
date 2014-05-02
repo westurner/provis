@@ -5,8 +5,7 @@
 Products
 ==========
 
-
-* 
+.. _provis-package:
 
 Provis Package
 =================
@@ -14,22 +13,24 @@ Provis Package
 | Documentation: https://provis.readthedocs.org/
 |
 
-* ``docs/`` -- `Documentation`_
-* ``Makefile`` -- `Makefile`_
-* ``setup.py`` -- `Python packaging`_
-* ``tox.ini`` -- tox build configuration
-* ``scripts/`` -- host bootstrap scripts
-* ``packer/TODOTOTODO`` -- `Packer Configuration`_ JSON
-* ``packer/scripts/`` -- packer image bootstrap scripts
-* ``vagrant/Vagrantfile`` -- vagrant configuration
-* ``salt/`` -- `salt configuration set`_
-* ``pillar/`` -- salt pillar configset
-* ``tests/`` -- testing utilities
-* ``runtests.py`` -- test runner
+| ``README.rst`` -- ref:`Provis README Documentation <readme>`
+| ``setup.py`` -- Python packaging
+| ``Makefile`` -- `Provis Makefile`_
+| ``docs/`` -- `Provis Documentation`_
+| ``tox.ini`` -- tox build configuration
+| ``scripts/`` -- host bootstrap scripts
+| ``packer/TODOTOTODO`` -- `Packer Configuration`_ JSON
+| ``packer/scripts/`` -- packer image bootstrap scripts
+| ``vagrant/Vagrantfile`` -- vagrant configuration
+| ``salt/`` -- `salt configuration set`_
+| ``pillar/`` -- salt pillar configset
+| ``tests/`` -- testing utilities
+| ``runtests.py`` -- test runner
+|
 
 
-Documentation
-===============
+Provis Documentation
+======================
 System documentation.
 
 * https://provis.readthedocs.org/en/latest/ -- ReadTheDocs hosted version
@@ -37,9 +38,9 @@ System documentation.
   * Manually update ReadTheDocs for the time being.
 
 
-Makefile
-=========
-Makefile with make tasks to bootstrap a host BLD:
+Provis Makefile
+================
+:ref:`Make` :ref:`Makefile <makefile>` with make tasks to bootstrap a host BLD:
 
 * Vagrant
 * Packer
@@ -47,12 +48,16 @@ Makefile with make tasks to bootstrap a host BLD:
 * VirtualBox
 * Downloading ISOs
 
-See: :ref:`Makefile <makefile>`.
 
+Provis Tests
+==============
+Use Case:
 
-Python Packaging
-==================
-Setup.py #TODO
+  I want to test current configsets with
+  Ubuntu 14.04, Vagrant, and VirtualBox;
+  because I only have one physical workstation and
+  am not yet prepared to switch over.
+
 
 
 Packer Configuration
@@ -190,15 +195,6 @@ Workstation Configset
     nginx
 
 
-
-Network Test Plan
-===================
-Use Case:
-
-  I want to test current configsets with
-  Ubuntu 14.04, Vagrant, and VirtualBox;
-  because I only have one physical workstation and
-  am not yet prepared to switch over.
 
 
 
