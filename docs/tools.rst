@@ -196,8 +196,11 @@ Compute Resources, Object Storage, Load Balancing, and DNS.
 Libvirt is a system for platform virtualization with
 various :ref:`Linux` hypervisors.
 
-* 
-
+* KVM/QEMU
+* Xen
+* LXC
+* OpenVZ
+* VirtualBox
 
 
 .. _linux:
@@ -257,6 +260,7 @@ with implementations in many languages.
 =================
 | Homepage: http://www.packer.io/
 | Docs: http://www.packer.io/docs
+| Docs: http://www.packer.io/docs/basics/terminology.html
 | Source: git https://github.com/mitchellh/packer
 |
 
