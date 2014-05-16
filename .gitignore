@@ -48,3 +48,5 @@ packer/packer_cache
 *.box
 packer/output-virtualbox
 vagrant/.vagrant/
+
+*.un~
