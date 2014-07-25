@@ -24,12 +24,11 @@
 #
 #   sudo apt-get install make
 
-HERE=$(shell pwd)
+HERE:=$(shell pwd)
 APPNAME:=provis
 
 PREFIX:=$(strip $(VIRTUAL_ENV))
 SRC:=$(PREFIX)/src
-
 ETC:=$(PREFIX)/etc
 VARRUN:=$(PREFIX)/var/run
 VARLOG:=$(PREFIX)/var/log
@@ -51,16 +50,14 @@ VBOX_NAME:= pvbx
 VBOX_VMPATH:= /srv/vm/vbox
 VBOX_URL:= TODO
 
-VAGRANT=vagrant
+VAGRANT:=vagrant
 VAGRANT_SRC_PATH:= $(HERE)/vagrant
 VAGRANT_HOME:= /srv/vm/vagrant
 
 SALT_CALL:= sudo salt-call
 SALT_CALL_LOCAL:= $(SALT_CALL) --local
 
-
 SUPERVISOR_CONF_SRC:= $(HERE)/salt/base/saltdev/files/supervisord.conf
-#SUPERVISOR_CONF:= $(HERE)/supervisord.conf
 SUPERVISOR_CONF:= $(PREFIX)/etc/supervisord.conf
 SUPERVISOR_BIN:= $(PREFIX)/bin
 #SUPERVISORCTL:= $(addsuffix '-c $(SUPERVISOR_CONF)', supervisorctl)
@@ -80,33 +77,72 @@ SEARCHTERM:=""
 default: help
 
 .PHONY: help
-help:
-	## Generate help from Makefile first-line comments starting with '##'
-	egrep -nv '^--$$' Makefile --color=auto | \
-		egrep '^(\w*):(\n|\s*)(.*)$$' -A 1 --color=auto | \
-		sed 's/^\s##\(.*\)/  \1\n/g' -
+help: makefile_help
+	## Print help information for this Makefile
 
 all: setup packer_img vagrant_box
 	## Setup and configure tools env, create image (packer),
 
-
-
 ## Makefile debug and test
 #
+makefile_help:
+	## Generate help from Makefile first-line comments starting with '##'
+	egrep -nv '^--$$' Makefile --color=auto \
+		| egrep '^(\w*):(\n|\s*)(.*)$$' -A 1 --color=auto \
+		| sed 's/^\s##\(.*\)/  \1\n/g' -
+
+makefile_help_list:
+	## Generate a list of Make tasks (and variables*) in this Makefile
+	## * variables with := assignments
+	cat Makefile | egrep '^\w+:'
+
 makefile_debug:
 	## Debug Makefile
+	env | sort
+	##
+	## make.log
 	$(MAKE) -p help | tee $(VARLOG)/make.log
 
 makefile_debug_search:
 	## search for $(SEARCHTERM) in makefile configuration
-	$(MAKE) makefile_debug | \
-		egrep -nv '^#\s+' | \
-		egrep $(SEARCHTERM) -B 6 -A 3 --color=auto
+	$(MAKE) makefile_debug \
+		| egrep -nv '^#\s+' \
+		| egrep $(SEARCHTERM) -B 6 -A 3 --color=auto
+
+makefile_generate_phony_list:
+	## Print a suggested Makefile .PHONY line for this Makefile
+	cat ./Makefile \
+		| egrep '^\w+:' \
+		| grep -v ':=' \
+		| sed 's/:.*//g' \
+		| tr '\n' ' ' \
+		| tee Makefile.PHONY
+
 
 makefile_test:
+	## Test this Makefile
+	$(MAKE) help
+	$(MAKE) help_list
+	$(MAKE) makefile_debug
 	$(MAKE) makefile_debug_search
-	$(MAKE) setup
+	$(MAKE) makefile_generate_phony_list
+	#$(MAKE) bootstrap_all
+	#$(MAKE) setup
+	$(MAKE) setup_tools
+	$(MAKE) download_isos
+	$(MAKE) packer_setup
+	$(MAKE) vagrant_setup
+	$(MAKE) vagrant_box_list
+	$(MAKE) packer_img
+	$(MAKE) vagrant_box
+	$(MAKE) vagrant_box_list
 	$(MAKE) packer_img_rebuild_vagrant
+	$(MAKE) vagrant_box_list
+	$(MAKE) vagrant_ssh_rod_test
+
+	#$(MAKE) docs_setup_ubuntu
+	$(MAKE) docs_setup
+	$(MAKE) docs_html_rebuild
 
 
 
@@ -148,11 +184,11 @@ packer_setup:
 	## see: scripts/install_tools.sh : install_packer_binary
 	mkdir -p $(PACKER_BUILD_PATH)
 
-packer_img_rebuild_vagrant: packer_img vagrant_destroy vagrant_box
-	## Rebuild packer image and $(VAGRANT) destroy, box add, up
-
 packer_img: packer_img_clean packer_img_build packer_img_copy_to_svr
 	## Rebuild packer image
+
+packer_img_rebuild_vagrant: packer_img vagrant_destroy vagrant_box
+	## Rebuild packer image and $(VAGRANT) destroy, box add, up
 
 packer_img_clean:
 	## Remove packer build files and generated ISO
@@ -221,6 +257,11 @@ vagrant_box_add:
 	echo "## box list: after" && \
 		$(MAKE) vagrant_box_list
 
+vagrant_ssh_rod_test:
+	## SSH into the <rod> vm
+	cd $(VAGRANT_SRC_PATH) && \
+		$(VAGRANT) ssh rod -c 'date'
+
 vagrant_ssh_rod:
 	## SSH into the <rod> vm
 	cd $(VAGRANT_SRC_PATH) && \
@@ -244,24 +285,39 @@ salt_setup: salt_bootstrap salt_mount
 
 salt_bootstrap: salt_bootstrap_minion
 	## Bootrap salt minion
-	#wget -O - http://bootstrap.saltstack.org | sudo sh
+	#wget -O - http://bootstrap.saltstack.org > scripts/salt-bootstrap.sh
 
 salt_bootstrap_minion:
 	## Bootstrap a salt minion
-	sudo bash scripts/salt-bootstrap.sh | \
-		logger --tag=salt.bootstrap.minion $(VARLOG)/salt-bootstrap-minion.log
+	sudo bash scripts/salt-bootstrap.sh \
+		| logger --tag=salt.minion.bootstrap $(VARLOG)/salt-bootstrap-minion.log
+	$(MAKE) salt_minion_local
+	# see: Vagrantfile
 
 salt_bootstrap_master:
 	## Bootstrap a salt master
-	sudo bash scripts/salt-bootstrap.sh -M | \
-		logger --tag=salt.bootstrap.master $(VARLOG)/salt-bootstrap-master.log
+	sudo bash scripts/salt-bootstrap.sh -M \
+		| logger --tag=salt.minion.bootstrap $(VARLOG)/salt-bootstrap-master.log
 
-salt_mount:
-	## Mount salt directories into /srv/salt
-	sudo mkdir -p /srv/salt | \
-		logger --tag=salt.mount >> $(VARLOG)/salt-bootstrap-mount.log
-	sudo mount -o bind ./salt /srv/salt | \
-		logger --tag=salt.mount >> $(VARLOG)/salt-bootstrap-mount.log
+salt_minion_local:
+	## Copy the /etc/salt/minion file into place (w/ pillar roots)
+	sudo cp salt/etc/minion /etc/salt/minion
+	sudo salt-call --local test.ping
+	$(MAKE) salt_local_grains
+	$(MAKE) salt_local_pillar
+	#$(MAKE) salt_local_highstate
+
+salt_mount_local:
+	## Mount salt directories into /srv/salt and /srv/pillar
+	sudo mkdir -p /srv/salt \
+		| logger --tag=salt.mount >> $(VARLOG)/salt-bootstrap-mount.log
+	sudo mount -o bind ./salt /srv/salt \
+		| logger --tag=salt.mount >> $(VARLOG)/salt-bootstrap-mount.log
+	sudo mkdir -p /srv/pillar \
+		| logger --tag=salt.mount >> $(VARLOG)/salt-bootstrap-mount.log
+	sudo mount -o bind ./pillar /srv/pillar \
+		| logger --tag=salt.mount >> $(VARLOG)/salt-bootstrap-mount.log
+
 
 salt_local_test:
 	## Test local salt configuration
@@ -269,7 +325,13 @@ salt_local_test:
 
 salt_local_grains:
 	## Print local grains
-	$(SALT_CALL_LOCAL) grains.items
+	$(SALT_CALL_LOCAL) --grains
+	# $(SALT_CALL_LOCAL) grains.items
+
+salt_local_doc:
+	## Print documentation (for all *modules*)
+	$(SALT_CALL_LOCAL) --doc
+
 
 salt_local_grains_json:
 	## Print local grains as JSON
@@ -468,12 +530,20 @@ salt_sv_tail_follow:
 		--follow="$(PREFIX)/var/log/minion.log" \
 		--follow="$(PREFIX)/var/log/supervisord.log"
 
+
+salt_list_keys:
+	salt-key -L
+
+salt_test_all:
+	salt '*' test.ping
+	salt '*' cmd.run 'hostname -a'
+
 ### provis python package
 
 ## provis tests
 #
 
-test: test_setup-py test_local
+test: test_setup-py test_local test_lint
 	## Run provis tests
 
 test_setup-py:
@@ -482,10 +552,7 @@ test_setup-py:
 
 test_local:
 	## Run local tests
-	py.test -v ./tests/tests.py
-
-test_all: test
-	## Run code tests and local tests
+	py.test -v ./tests/
 
 test_lint:
 	## Run flake8 tests for source and tests
@@ -605,13 +672,22 @@ tox_docs:
 docs_setup:
 	## Install docs build requirements
 	pip install -r requirements-docs.txt
+	## See also:
+	##  make docs_setup_ubuntu
+	##  make 
+
+docs_setup_ubuntu: docs_auto_setup docs_rst2pdf_setup_ubuntu docs_setup_latex_ubuntu
+	## Install sphinx build requirements on Ubuntu
 
 docs_clean:
-	## Clean the built docs
+	## Clean the built docs from docs/_build/
 	$(MAKE) -C docs clean
 
 docs_build: docs_clean docs_api docs_html_build
+	## Build the docs
 
+docs_html_rebuild: docs_build docs_html_rsync_local
+	## Rebuild the docs and sync HTML to local hosting
 
 docs_html_build: docs_html_clean
 	## Build the docs (requires `make docs_setup`)
@@ -620,13 +696,6 @@ docs_html_build: docs_html_clean
 docs_html_clean:
 	## Clean the html docs
 	rm -rf ./docs/_build/html
-
-
-docs_html_rebuild: docs_html_build docs_html_rsync_local
-
-
-docs_setup_ubuntu: docs_rst2pdf_setup_ubuntu docs_setup_sphinx_ubuntu docs_auto_setup docs_setup_latex_ubuntu
-
 
 docs_rst2pdf_build:
 	## Build rst2pdf PDF from index.rst
@@ -646,12 +715,15 @@ docs_rst2pdf_view:
 	## Launch PDF viewer with
 	evince docs/_build/rst2pdf/$(APPNAME)-docs.rst2pdf.pdf
 
-docs_rst2pdf_rebuile: docs_rst2pdf_clean docs_rst2pdf_build docs_rst2pdf_view
+docs_rst2pdf_rebuild: docs_rst2pdf_clean docs_rst2pdf_build docs_rst2pdf_view
 	## Build rst2pdf PDF and launch PDF viewer
 
+docs_latex_build:
+	## Build the latex docs
+	$(MAKE) -C docs latex
 
 docs_latex_debug:
-	## Debug latex
+	## Debug existing latex build
 	cd docs/_build/latex/
 	$(EDITOR) docs/_build/latex/*.tex \
 				_build/latex/*.aux \
@@ -660,12 +732,17 @@ docs_latex_debug:
 				_build/latex/*.log \
 				_build/latex/*.idx
 
-docs_latex_view:
+
+docs_latexpdf_build:
+	## Build the latexpdf docs
+	$(MAKE) -C docs latexpdf
+
+docs_latexpdf_view:
 	## Open a GUI PDF viewer of the latexpdf 
-	evince docs/_build/latex/$(APPNAME)-docs.latex.pdf
+	evince docs/_build/latex/*.pdf
 
-docs_latex_preview: docs_latex docs_latex_open
-
+docs_latexpdf_preview: docs_latex_build docs_latex_view
+	## Generate latex
 
 docs_s5_build:
 	[ -d $(SLIDES_BUILDDIR) ] || rm -rf $(SLIDES_BUILDDIR)
@@ -774,4 +851,14 @@ docs_view_hosted:
 
 edit:
 	## Edit the project
-	$(EDITOR) Makefile README.rst docs/index.rst salt/ pillar/ vagrant/Vagrantfile
+	$(EDITOR) \
+		README.rst \
+		HISTORY.rst \
+		Makefile \
+		docs/index.rst \
+		docs/ \
+		salt/ \
+		pillar/ \
+		vagrant/Vagrantfile
+
+
