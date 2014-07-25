@@ -148,35 +148,6 @@ Run ``make`` with the `Makefile`_::
    make setup
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-Patterns
-==========
-
-Techniques
-============
-
-Tools
-=======
-
-Scripts
-=========
-
-Contributing
-==============
-
 License
 =========
 
