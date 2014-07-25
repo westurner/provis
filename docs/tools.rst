@@ -4,17 +4,9 @@
 Tools
 =======
 
-Maximizing Platform Build Tool Value
----------------------------------------
-Tools for bootstrapping, installing, and defining changes
-in system process controls.
+Tools for bootstrapping, installing, and managing change in systems.
 
-Comparing Bootstrap and Maintenance Tools
-
-* Maintenance Scripting
-* Change Control
-* Opportunities for defining operational metrics
-
+**Objective**: Maximize Tool Value (Output / Input)
 
 
 Distro Packages
@@ -494,8 +486,8 @@ and :ref:`Virtualenvwrapper` are all written in Python.
 
 .. _python-package:
 
-Python Package
-================
+:index:`Python Package`
+========================
 Archive of source and/or binary files containing a setup.py.
 
 A setup.py calls a ``distutils.setup`` or ``setuptools.setup`` function
