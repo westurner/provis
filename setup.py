@@ -23,7 +23,7 @@ with open(os.path.join(datadir, 'HISTORY.rst')) as f:
     history = f.read().replace('.. :changelog:', '')
 
 
-class PyTest(Command):
+class PyTestCommand(Command):
     user_options = []
 
     def initialize_options(self):
@@ -45,7 +45,7 @@ class PyTest(Command):
 
 setup(
     name='provis',
-    version='0.1.0',
+    version='0.1.1',
     description=(
         'Infrastructure Provisioning Scripts, Configuration, and Tests'),
     long_description=readme + '\n\n' + history,
@@ -76,5 +76,7 @@ setup(
     ],
     test_suite='tests',
     tests_require=['pytest', 'pytest-capturelog'],
-    cmdclass = {'test': PyTest},
+    cmdclass = {
+        'test': PyTestCommand,
+    },
 )
