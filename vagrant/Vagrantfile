@@ -24,17 +24,64 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   # config.ssh.port = 22
   #
 
+  # https://github.com/mitchellh/vagrant/issues/1673 
+  # config.ssh.shell = "bash -c 'BASH_ENV=/etc/profile exec bash'"
+
   config.vm.define :rod do |config|
     # Hot Rod Kimble ("rod" <> "door")
     #rod.vm.box = "pvbx"
-    config.vm.hostname = "rod"
-    config.vm.network "public_network", :bridge => "eth0", :mac => "222222222228"
-    config.vm.network "private_network", ip: "10.10.0.2", virtualbox__intnet: "int"
+    config.vm.hostname = "rod.ocean.create.wrd.nu"
+    config.vm.network "public_network",
+      :bridge => "eth0",
+      :mac => "222222222228",
+      :netmask => '255.255.255.0',
+      :auto_config => false
+    config.vm.network "private_network",
+      ip: "10.10.0.2",
+      virtualbox__intnet: "int",
+      :auto_config => false
+
+    # NOTE: this makes all salt states and pillar data
+    # available to this machine
+    config.vm.synced_folder "../salt", "/srv/salt/"
+    config.vm.synced_folder "../pillar", "/srv/pillar/"
+    # TODO: separate vm
+    #config.vm.synced_folder "/srv/repos/apt", "/srv/repos/apt",
+    #    mount_options: [
+        #    "dmode=773",
+        #    "fmode=662",
+        #    "uid=105",  # grep apt-cacher /etc/passwd
+        #    "gid=110"]  # grep apt-cacher /etc/group
+
+    #config.vm.provision :salt do |salt|
+    #  salt.no_minion = false
+    #  salt.minion_config = "../salt/etc/minion"
+    #  salt.run_highstate = true
+    #end
+
+    ## Copy the minion config into /etc/salt/minion
+    config.vm.provision "shell",
+      inline: "sudo cp /srv/salt/etc/minion /etc/salt/minion"
+
+    ## Set the minion_id in /etc/salt/minion_id
+    config.vm.provision "shell",
+      inline: "hostname -f | sudo tee /etc/salt/minion_id"
+
+    ## Run salt-call --local grains.items
+    config.vm.provision "shell",
+      inline: "sudo salt-call --local grains.items"
+
+    ## Run salt-call --local state.highstate
+    config.vm.provision "shell",
+      inline: "sudo salt-call --local state.highstate"
   end
 
   config.vm.define :salt do |config|
-    config.vm.hostname = "salt"
-    config.vm.network "private_network", ip: "10.10.0.20", virtualbox__intnet: "int"
+    config.vm.hostname = "salt.ocean.create.wrd.nu"
+    config.vm.network "private_network",
+      ip: "10.10.0.20",
+      virtualbox__intnet: "int",
+      :auto_config => false
   end
 
   # Disable automatic box update checking. If you disable this, then
