@@ -1,9 +1,12 @@
-wheel==0.22.0
+wheel
+#wheel==0.22.0
 pathlib
 URLObject
 requests
 BeautifulSoup4
 pytest
 pytest-capturelog
+#pytest-ipdb
+-e git+https://github.com/mverteuil/pytest-ipdb#egg=pytest-ipdb
 structlog
 sarge
