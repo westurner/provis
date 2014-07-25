@@ -31,6 +31,8 @@ Provis Package
 
 Provis Documentation
 ======================
+https://github.com/westurner/provis/tree/master/docs
+
 System documentation.
 
 * https://provis.readthedocs.org/en/latest/ -- ReadTheDocs hosted version
@@ -40,6 +42,8 @@ System documentation.
 
 Provis Makefile
 ================
+https://github.com/westurner/provis/blob/master/Makefile
+
 :ref:`Make` :ref:`Makefile <makefile>` with make tasks to bootstrap a host BLD:
 
 * Vagrant
@@ -51,14 +55,11 @@ Provis Makefile
 
 Provis Tests
 ==============
-Use Case:
+https://github.com/westurner/provis/blob/master/tox.ini
+https://github.com/westurner/provis/tree/master/tests
 
-  I want to test current configsets with
-  Ubuntu 14.04, Vagrant, and VirtualBox;
-  because I only have one physical workstation and
-  am not yet prepared to switch over.
-
-
+make test
+make debugfile
 
 Packer Configuration
 ======================
@@ -79,21 +80,36 @@ Vagrantfile to launch image instances and provision salt
 
 
 
-Salt Formulas
-===============
-Reusable salt state packages.
+.. _provis stack:
+.. _stack:
 
-
-
-
-Salt Pillar
+Provis Stack
 ==============
+Host-specific catalog of files, packages, and services.
+
+Salt Formulas
+---------------
+Reusable :ref:`salt` state packages.
+
+Salt Modules
+-------------
+Python functions of the Salt API which are remotely-callable
+
+Salt States
+------------
+Salt policies
 
 
+Salt Environment
+-----------------
+An 
 
-Salt Configuration Set
-========================
-Salt states and modules.
+* /etc/salt/minion.conf
+* /etc/salt/master.conf
+* /srv/salt/`top.sls`
+
+:ref:`Salt` states and modules.
+
 
 Basebox Configset
 ---------------------

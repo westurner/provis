@@ -5,6 +5,13 @@
 Activities
 ============
 
+Somewhere between usage, process checklists, and
+:ref:`Provis Makefile` documentation.
+
+
+Project
+=========
+
 Create a new repository
 -------------------------
 See :ref:`Contributing`.
@@ -57,19 +64,28 @@ Create project documentation
   + [x] Add {...} to docs/index.rst
 
 
+Usage
+=======
+
 Setup host machine
 --------------------
-* [x] Download OS netboot ISOs
 
+* [x] Install Ubuntu 12.04
+* [x] Update and upgrade Ubuntu 12.04
+* [x] Download OS netboot ISOs
 * [x] Configure OS package mirrors
 
-  * [x] Cherrypick apt-cacher-ng binary from trusty
-    (HTTPS support for docker apt repos)
+  * [x] Find a drive with storage
+  * [x] Install apt-cacher-ng
 
-* [x] Install tools
+    * [x] Cherrypick apt-cacher-ng binary from trusty
+      (HTTPS support for docker apt repos)
+    * [ ] dpkg-divert /usr/sbin/apt-cacher-ng
 
-  * [x] Document Homepage, Source, Docs (docs/tools.rst)
-  * [x] Script installation (scripts/install_tools.sh)
+* [x] Install tools (``make setup_tools``)
+
+  * [x] Review Tool Homepage, Source, Docs (docs/tools.rst)
+  * [x] Script installation (``scripts/install_tools.sh``)
 
     * [x] Install Python, Ruby, Go, Git, Wget::
 
@@ -83,7 +99,6 @@ Setup host machine
 
 Configure networking and DNS
 ------------------------------
-* [ ] Configure networking support (configsets)
 
 * [ ] /etc/network/interfaces (salt)
 
@@ -110,9 +125,9 @@ Create virtual image
 ----------------------
 * [ ] Create new [VirtualBox]/[Vagrant] basebox with Packer
 
-  * [ ] Create/adapt mimimal configsets for generating a Vagrant basebox
+  * [ ] Script image build with Packer and ``packer/scripts``.
 
-    * [x] setup shell scripts (thanks!)
+    * [x] setup shell scripts
     * [x] vagrant (SSH errors)
     * [x] vagrant FS errors
     * [x] VirtualBox guest tools image (~NTP)
@@ -132,6 +147,7 @@ Provision vagrant image instance
 
   * [x] Configure vagrant salt provisioning bootstrap
   * [ ] Configure DNS support 
+
 * [x] Launch virtual instance: ``vagrant up [<hostname>]``
 * [x] Provision with salt: ``vagrant provision [<hostname>]``
 * [x] Shudown with salt: ``vagrant halt [<hostname>]``
@@ -153,7 +169,7 @@ Bootstrap salt minion
 * [ ] Configure for standalone minion setup
 
   * [ ] Check `file_roots` and `pillar_roots` in /etc/salt/minion
-  * [ ] Verify that salt files are in /srv/salt and /srv/pillar
+  * [ ] Verify that salt files are in ``/srv/salt`` and ``/srv/pillar``
 
 * [ ] Configure for master/minion setup
 

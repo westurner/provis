@@ -4,6 +4,115 @@
 Tools
 =======
 
+Maximizing Platform Build Tool Value
+---------------------------------------
+Tools for bootstrapping, installing, and defining changes
+in system process controls.
+
+Comparing Bootstrap and Maintenance Tools
+
+* Maintenance Scripting
+* Change Control
+* Opportunities for defining operational metrics
+
+
+
+Distro Packages
+=================
+Operating Systems Packaging
+
+Source and/or binary packages to install from a standard archive
+with a *signed* manifest containing file signatures of
+package files.
+
+
+
+RPM Package
+~~~~~~~~~~~~~
+https://en.wikipedia.org/wiki/RPM_Package_Manager
+
+* Installable with yum, {...}
+* Build with TODO: rpmbuild
+* Python: build with bdist_rpm, {...}
+* List contents::
+
+   # with lesspipe
+   less ~/path/to/local.rpm
+
+* Package Repositories (yum):
+
+  * Local: directories of packages and metadata
+  * Network: HTTP, HTTPS, RSYNC, FTP
+
+
+DEB Package
+~~~~~~~~~~~~
+https://en.wikipedia.org/wiki/Deb_(file_format)
+
+* Installable with apt-get, aptitutde, 
+* Build with dpkg
+* List contents::
+
+   # with lesspipe
+   less ~/path/to/local.deb
+
+* Package Repositories (apt):
+
+  * Local: directories of packages and metadata
+  * Network: HTTP, HTTPS, RSYNC, FTP (apt transports)
+
+* Linux/Mac/Windows: Yes / Fink / No
+
+  
+Homebrew
+~~~~~~~~~~
+https://en.wikipedia.org/wiki/Homebrew_(package_management_software)
+
+* Linux/Mac/Windows: No / Yes / No
+
+* Package Recipe Repositories (brew):
+
+  * Local: 
+  * Network: HTTP, HTTPS
+
+
+NuGet
+~~~~~~
+https://en.wikipedia.org/wiki/NuGet
+
+* Package Repositories (chocolatey):
+
+  * https://chocolatey.org/ 
+
+* Linux/Mac/Windows: No / No / Yes
+
+  
+Portage
+~~~~~~~~~
+https://en.wikipedia.org/wiki/Portage_(software)
+
+* Build recipes with flag sets
+* Package Repositories (portage)  
+
+
+Port Tree
+~~~~~~~~~~
+Sources and Makefiles designed to compile software packages
+for particular distributions' kernel and standard libraries
+on a particular platform.
+
+
+CoreOS Docker Images
+~~~~~~~~~~~~~~~~~~~~~
+CoreOS schedules redundant docker images and configuration
+over etcd, a key-value store with a D-Bus interface.
+
+* Create high availability zone clusters with fleet
+* Systemd init files
+ 
+
+
+
 
 .. _apt:
 
@@ -56,6 +165,25 @@ Bash, the Bourne-again shell.
    info bash
    man bash
 
+* Designed to work with unix command outputs and return codes
+* Functions
+* Portability: sh (sh, bash, dash, zsh) shell scripts are mostly
+  compatible
+* Logging::
+  
+   set -x  # print commands and arguments
+   set -v  # print source
+
+Bash Configuration::
+
+   /etc/profile
+   /etc/bash.bashrc
+   /etc/profile.d/*.sh
+   ${HOME}/.profile        /etc/skel/.profile   # PATH=+$HOME/bin  # umask
+   ${HOME}/.bash_profile   # empty. preempts .profile
+
+Linux/Mac/Windows: Almost Always / Bash 3.2 / Cygwin/Mingwin
+    
 
 .. _dpkg:
 
@@ -234,10 +362,29 @@ A free and open source operating system kernel written in C.
 GNU Make is a classic, ubiquitous software build tool
 designed for file-based source code compilation.
 
-Make build chains are represented in a :ref:`Makefile`.
-
 :ref:`Bash`, :ref:`Python`, and the GNU/:ref:`Linux` kernel
 are all built with Make.
+
+Make build task chains are represented in a :ref:`Makefile`.
+
+Pros
+
+* Simple, easy to read syntax
+* Designed to build files on disk
+* Nesting: ``make -C <path> <taskname>``
+* Variable Syntax: ``$(VARIABLE_NAME)``  
+* Bash completion: ``make <tab>``
+* Python: Parseable with disutils.text_file Text File 
+* Logging: command names and values to stdout  
+
+Cons
+
+* Platform Portability: make is not installed everywhere  
+* Global Variables: Parametrization with shell scripts
+  
+* Linux/Mac/Windows: Usually / brew / executable
+
+
 
 
 .. _msgpack:
@@ -345,6 +492,46 @@ in Python.
 and :ref:`Virtualenvwrapper` are all written in Python.
 
 
+.. _python-package:
+
+Python Package
+================
+Archive of source and/or binary files containing a setup.py.
+
+A setup.py calls a ``distutils.setup`` or ``setuptools.setup`` function
+with package metadata fields like name, version, maintainer name,
+maintainer email, and home page;
+as well as package requirements: lists of
+package names and version specifiers in ``install_requires`` and
+``tests_require``, and a dict for any ``extras_require`` such
+that '``easy_install setup.py``, ``python setup.py install``,
+and ``pip install --upgrade pip`` can all retrieve versions of
+packages which it depends on.
+
+
+* Distutils is in the Python standard library
+* Setuptools is widely implemented: ``easy_install``
+* Setuptools can be installed with ``python ez_setup.py``
+* Setuptools can be installed with a system package manager (apt, yum)
+* Python packages are tested and repackaged by package maintainers
+* Python packages are served from a package index
+* PyPi is the Python Community package home  
+* Packages are released to PyPi
+
+
+
+* Package Repositories (setup.py -> pypi)
+* Package Repositories (conda)
+* Package Repositories (enpkg)
+* Package Repositories (deb/apt, rpm/yum)
+
+* Build RPM and DEB packages from Python packages with setuptools
+
+  * ``python setup.py bdist_rpm --help``
+  * ``python setup.py --command-packages=stdeb.command bdist_deb --help``
+
+
+
 .. _pip:
 
 :index:`Pip`
@@ -376,12 +563,15 @@ Pip is a tool for working with :ref:`Python` packages.
    pip uninstall libcloud
 
 
-Pip configuration is in ``${HOME}/.pip/pip.conf``.
+* Pip retrieves and installs packages from package indexes
+* Pip can do uninstall and upgrade
+* Pip builds upon distutils and setuptools
+* Pip can install from version control repository URLs  
+* Pip configuration is in ``${HOME}/.pip/pip.conf``.
+* Pip can maintain a local cache of downloaded packages
 
-Pip can maintain a local cache of downloaded packages.
-
-With :ref:`Python` 2, pip is preferable to ``easy_install``
-because Pip installs ``backports.ssl_match_hostname``.
+.. note:: With :ref:`Python` 2, pip is preferable to ``easy_install``
+   because Pip installs ``backports.ssl_match_hostname``.
 
 .. glossary::
 
@@ -398,11 +588,27 @@ because Pip installs ``backports.ssl_match_hostname``.
 
       An example ``requirements.txt`` file::
 
-         # Install a package from pypi
+         # install pip from the default index (PyPi)
+         pip
+         --index=https://pypi.python.org/simple --upgrade pip
+
+         # Install pip 1.5 or greater from PyPi
          pip >= 1.5
 
-         # Git clone and install as an editable develop egg
-         -e git+https://github.com/pypa/pip#egg=pip
+         # Git clone and install pip as an editable develop egg
+         -e git+https://github.com/pypa/pip@1.5.X#egg=pip
+
+         # Install a source distribution release from PyPi
+         # and check the MD5 checksum in the URL
+         https://pypi.python.org/packages/source/p/pip/pip-1.5.5.tar.gz#md5=7520581ba0687dec1ce85bd15496537b
+
+         # Install a source distribution release from Warehouse
+         https://warehouse.python.org/packages/source/p/pip/pip-1.5.5.tar.gz
+
+         # Install an additional requirements.txt file
+         -r requirements/more-requirements.txt
+
+        
 
 
 .. _restructuredtext:
@@ -458,7 +664,7 @@ Pandoc also supports a form of ReStructuredText.
 | Wikipedia: `<https://en.wikipedia.org/wiki/Salt_(software)>`_
 | Homepage: http://www.saltstack.com
 | Docs: http://docs.saltstack.com/en/latest/
-| Docs: 
+| Docs: http://salt.readthedocs.org/en/latest/ref/clients/index.html#python-api 
 | Docs: http://docs.saltstack.com/en/latest/topics/development/hacking.html 
 | Glossary: http://docs.saltstack.com/en/latest/glossary.html 
 | Source: git https://github.com/saltstack/salt
@@ -472,7 +678,7 @@ one or more physical and virtual machines running various operating systems.
 .. glossary::
 
    Salt Top File
-      Root of a Salt Environment (`top.sls`)
+      Root of a Salt Environment (``top.sls``)
 
    Salt Environment
       Folder of Salt States with a top.sls top file.
@@ -596,12 +802,27 @@ Sphinx is a tool for working with
 and rendering them into HTML, PDF, LaTeX, ePub,
 and a number of other formats.
 
-Sphinx extends :ref:`Docutils` with a number of useful behaviors.
+Sphinx extends :ref:`Docutils` with a number of useful markup behaviors
+which are not supported by other ReStructuredText parsers.
+
+Most other ReStructuredText parsers do not support Sphinx directives;
+so, for example,
+
+* GitHub and BitBucket do not support Sphinx but do support ReStructuredText
+  so README.rst containing Sphinx tags renders in plaintext or raises errors.
+
+  For example, the index page of this
+  :ref:`Sphinx` documentation set is generated from
+  a file named ``index.rst`` and referenced by ``docs/conf.py``.
+
+  * Input: https://raw.githubusercontent.com/westurner/provis/master/docs/index.rst 
+  * Output: https://github.com/westurner/provis/blob/master/docs/index.rst 
+  * Output: :ref:`ReadTheDocs` http://provis.readthedocs.org/en/latest/
 
 .. glossary::
 
    Sphinx Builder
-      Render Sphinx ReStructuredText into various forms:
+      Render Sphinx :ref:`ReStructuredText` into various forms:
 
          * HTML
          * LaTeX
@@ -615,6 +836,9 @@ Sphinx extends :ref:`Docutils` with a number of useful behaviors.
       which only work with Sphinx.
 
    Sphinx Directive
+      Sphinx extensions of :ref:`Docutils` :ref:`ReStructuredText` directives.
+
+      Most other ReStructuredText parsers do not support Sphinx directives.
 
       .. code-block:: rest
 
@@ -627,9 +851,11 @@ Sphinx extends :ref:`Docutils` with a number of useful behaviors.
       See: `Sphinx Directives <http://sphinx-doc.org/rest.html#directives>`_
 
    Sphinx Role
-        RestructuredText role extensions
-        
-        .. code-block:: rest
+      Sphinx extensions of :ref:`Docutils` :ref:`RestructuredText` roles
+      
+      Most other ReStructured
+
+      .. code-block:: rest
 
             .. _anchor-name:
 
@@ -693,15 +919,98 @@ Run the py27 environment::
 | Source: git https://github.com/mitchellh/vagrant
 |
 
-Vagrant supports various "providers"(hypervisors, clouds) both natively
-and with third-party plugins.
+Vagrant is a tool for creating and managing virtual machine instances
+with CPU, RAM, Storage, and Networking.
 
-Natively: VirtualBox, VMware, Hyper-V
+* Vagrant:
 
-With Plugins: https://github.com/mitchellh/vagrant/wiki/Available-Vagrant-Plugins
+  * provides helpful commandline porcelain on top of
+    :ref:`VirtualBox` ``VboxManage``
+  * 
+
+::
+
+   vagrant help
+   vagrant status
+   vagrant init ubuntu/trusty64
+   vagrant up
+   vagrant ssh
+   $EDITOR Vagrantfile
+   vagrant provision
+   vagrant halt
+   vagrant destroy
+
+.. glossary::
+
+   Vagrantfile
+      Vagrant script defining a team of one or more
+      virtual machines and networks.
+
+      Create a Vagrantfile::
+
+         vagrant init [basebox]
+         cat Vagrantfile
+
+      Start virtual machines and networks defined in the Vagrantfile::
+
+         vagrant status
+         vagrant up
+
+   Vagrant Box
+      Vagrant base machine virtual machine image.
+
+      There are many baseboxes for various operating systems.
+
+      Essentially a virtual disk plus CPU, RAM, Storage, and Networking
+      metadata.
+
+      Locally-stored and cached vagrant boxes can be listed with::
+
+         vagrant help box
+         vagrant box list
+
+      A running vagrant environment can be packaged into a new box with::
+
+         vagrant package
+
+      :ref:`Packer` generates :ref:`VirtualBox` Vagrant Boxes
+      with a Post-Processor.
+
+   Vagrant Cloud
+      Vagrant-hosted public Vagrant Box storage.
+      
+      Install a box from Vagrant cloud::
+
+         vagrant init ubuntu/trusty64
+         vagrant up
+         vagrant ssh
+
+   Vagrant Provider
+      A driver for running Vagrant Boxes with a hypervisor or in a cloud.
+
+      The Vagrant :ref:`VirtualBox` Provider is well-supported.
+
+      With Plugins: https://github.com/mitchellh/vagrant/wiki/Available-Vagrant-Plugins
+
+      See also: :ref:`libcloud`.
+
+   Vagrant Provisioner
+      Set of hooks to install and run shell scripts and
+      configuration managment tools over ``vagrant ssh``.
+
+      Vagrant up runs ``vagrant provision`` on first invocation of
+      ``vagrant up``.
+
+      ::
+
+         vagrant provision
+
+ 
+.. note:: Vagrant configures a default NFS share mounted at ``/vagrant``.
 
 
-.. note:: Vagrant adds a default NAT Adapter as eth0.
+.. note:: Vagrant adds a default NAT Adapter as eth0; presumably for
+   DNS, the default route, and to ensure ``vagrant ssh`` connectivity.
 
 
 .. _virtualbox:
@@ -714,16 +1023,16 @@ With Plugins: https://github.com/mitchellh/vagrant/wiki/Available-Vagrant-Plugin
 | Source: svn svn://www.virtualbox.org/svn/vbox/trunk
 |
 
-VirtualBox is platform virtualization package
+Oracle VirtualBox is a platform virtualization package
 for running one or more guest VMs (virtual machines) within a host system.
-
-For local testing purposes, VirtualBox is probably the easiest target.
 
 VirtualBox:
 
-* runs on many platforms: Linux, OSX, Windows
-* has support for full NX/AMD-v virtualization
+* runs on many platforms: :ref:`Linux`, OSX, Windows
+* has support for full platform NX/AMD-v virtualization
 * requires matching kernel modules
+
+:ref:`Vagrant` scripts VirtualBox.
 
 
 .. _virtualenv:
@@ -733,21 +1042,59 @@ VirtualBox:
 | Homepage: http://www.virtualenv.org
 | Docs: http://www.virtualenv.org/en/latest/ 
 | Source: git https://github.com/pypa/virtualenv
-| PyPi: https://pypi.python.org/pypi/virtualenv 
+| PyPI: https://pypi.python.org/pypi/virtualenv 
 | IRC: #pip
 |
 
 Virtualenv is a tool for creating reproducible :ref:`Python` environments.
 
-Create a virtualenv, work on it, and show how ``sys.path`` is managed:
+Virtualenv sets the shell environment variable $VIRTUAL_ENV when active.
+
+Paths within a virtualenv are more-or-less :ref:`FSH
+<filesystem_hierarchy_standard>` standard paths, making
+virtualenv structure very useful for building
+chroot and container overlays.
+
+A standard virtual environment::
+
+   bin/           # pip, easy_install, console_scripts
+   bin/activate   # source bin/activate to work on a virtualenv
+   include/       # (symlinks to) dev headers (python-dev/python-devel)
+   lib/           # libraries
+   lib/python2.7/site-packages/  # pip and easy_installed packages
+   local/         # symlinks to bin, include, and lib
+
+   src/           # pip installs editable requirements here
+
+   # also useful
+   etc/           # configuration
+   var/log        # logs
+   var/run        # sockets, PID files
+   tmp/           # mkstemp temporary files with permission bits
+   srv/           # local data
+
+:ref:`Virtualenvwrapper` wraps virtualenv. In the following
+code shell example, comments with ``##`` are virtualenvwrapper
 
 .. code-block:: bash
 
+   # Print Python site settings
    python -m site
 
+   # Create a virtualenv
+   cd $WORKON_HOME
    virtualenv example
    source ./example/bin/activate
+   ## mkvirtualenv example
+   ## workon example
+
+   # Review virtualenv Python site settings
    python -m site
+
+   # List files in site-packages
+   ls -altr $VIRTUAL_ENV/lib/python*/site-packages/**
+   ## (cdsitepackages && ls -altr **)
+   ## lssitepackages -altr **
 
 
 .. _virtualenvwrapper:
@@ -756,20 +1103,46 @@ Create a virtualenv, work on it, and show how ``sys.path`` is managed:
 ===========================
 | Docs: http://virtualenvwrapper.readthedocs.org/en/latest/
 | Source: hg https://bitbucket.org/dhellmann/virtualenvwrapper
-| Pypi: https://pypi.python.org/pypi/virtualenvwrapper
+| PyPI: https://pypi.python.org/pypi/virtualenvwrapper
 |
 
-Virtualenvwrapper extends :ref:`Virtualenv` with a number of convenient
-conventions.
+Virtualenvwrapper is a tool which extends virtualenvwrapper.
+
+Virtualenvwrapper provides a number of
+useful shell commands and python functions
+for working with and within :ref:`virtualenvs <virtualenv>`,
+as well as project event scripts (e.g. ``postactivate``, ``postmkvirtualenv``)
+and two filesystem configuration variables
+useful for structuring
+development projects of any language within :ref:`virtualenvs <virtualenv>`:
+``$PROJECT_HOME`` and ``$WORKON_HOME``.
+
+Virtualenvwrapper is sourced into the shell::
+
+   # pip install --user --upgrade virtualenvwrapper
+   source ~/.local/bin/virtualenvwrapper.sh
+
+   # sudo apt-get install virtualenvwrapper
+   source /etc/bash_completion.d/virtualenvwrapper
+
 
 .. code-block:: bash
 
+   echo $PROJECT_HOME; echo ~/wrk        # default: ~/workspace
+   echo $WORKON_HOME;  echo ~/wrk/.ve    # default: ~/.virtualenvs
+
    mkvirtualenv example
    workon example
-   cdvirtualenv; pwd; ls
-   mkdir src; cd src/
+   cdvirtualenv ; ls
+   mkdir src ; cd src/
+
+   cdsitepackages
+   lssitepackages
+
+
    deactivate
    rmvirtualenv example
+
 
 
 .. _yaml:

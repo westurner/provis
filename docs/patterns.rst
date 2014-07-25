@@ -117,4 +117,17 @@ CentOS is more closely tracking RHEL than ever before.
 CoreOS and etcd are designed to scale.
 
 
+Configuration
+================
+
+TODO: fstat misses or explicit conditionals?::
+
+    1. source:
+       1. salt://ntp/local_server/ntp.{{ grains['os'] }}.{{ grains['osrelease'] }}.conf
+       2. salt://ntp/local_server/ntp.{{ grains['os'] }}.{{ grains['osrelease'][0] }}.conf
+       3. salt://ntp/local_server/ntp.{{ grains['os'] }}
+       4. salt://ntp/local_server/ntp.{{ grains['os_family'] }}.conf
+       5. salt://ntp/local_server/ntp.{{ grains['kernel'] }}.conf
+       6. salt://ntp/local_server/ntp.conf
+
 
