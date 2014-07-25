@@ -20,24 +20,21 @@ Provis
 
 Infrastructure Provisioning Scripts and Configuration Sets
 
-A Python package with a few tests, system bootstrap scripts, and a Makefile
-for building and configuring cloud servers.
+`A Python package`_ with a few tests, system bootstrap scripts, and a Makefile
+for building and configuring cloud servers with a number of helpful
+`tools`_:
 
+* Ubuntu Linux
+* Packer (Go)
+* Vagrant (Ruby)
+* Salt (Python)
 
-This project :ref:`scripts` a number of helpful
-:ref:`tools` to automate :ref:`activities`
-that produce :ref:`products`
-which satisfy the :ref:`goals`.
+.. _A Python package: http://provis.readthedocs.org/en/latest/products.html#provis-package
+.. _tools: http://provis.readthedocs.org/en/latest/tools.html
 
-The :ref:`Provis Package <provis-package>` is one :ref:`product
-<products>` of this project.
+.. .. include:: goals.rst
 
-Within the :ref:`Provis Package <provis-package>` is a :ref:`Makefile`
-containing untold secrets of the universe.
-
-
-.. include:: goals.rst
-
+.. contents::   
 
 Installation
 ============
@@ -83,16 +80,16 @@ Install make, build requirements:
 
    apt-get install make python pip
 
-* Install :ref:`make`::
+* Install `make`_::
 
    apt-get install make
 
-* Install :ref:`pip`::
+* Install `pip`_::
 
    apt-get install pip
    pip install --upgrade pip
 
-* Install :ref:`virtualenv` and :ref:`virtualenvwrapper` (optional)::
+* Install `virtualenv`_ and `virtualenvwrapper`_ (optional)::
 
    pip install virtualenv virtualenvwrapper
 
@@ -142,7 +139,7 @@ List ``Makefile`` command descriptions::
    $EDITOR Makefile
 
 
-Run ``make`` with the :ref:`Makefile`::
+Run ``make`` with the `Makefile`_::
 
 
    cd ./provis
@@ -185,5 +182,5 @@ License
 
 * Free software: `BSD license <#license>`_
 
-.. include:: ../LICENSE
+.. include:: ./LICENSE
 
