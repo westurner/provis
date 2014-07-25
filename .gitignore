@@ -50,3 +50,4 @@ packer/output-virtualbox
 vagrant/.vagrant/
 
 *.un~
+.ropeproject
