@@ -20,9 +20,9 @@ Provis
 
 Infrastructure Provisioning Scripts and Configuration Sets
 
-* Free software: `BSD license <#license>`_
-* Documentation: http://provis.readthedocs.org/
-* Source: https://github.com/westurner/provis
+A Python package with a few tests, system bootstrap scripts, and a Makefile
+for building and configuring cloud servers.
+
 
 This project :ref:`scripts` a number of helpful
 :ref:`tools` to automate :ref:`activities`
@@ -43,36 +43,6 @@ Installation
 ============
 * `Install build requirements`_
 * `Install the Provis Package`_
-
-Install Build Requirements
-----------------------------
-
-Ubuntu 12.04 LTS
-~~~~~~~~~~~~~~~~~~
-Tested with:
-
-* :ref:`Ubuntu` 12.04 LTS
-* Install :ref:`Python` 2.6 or newer::
-
-    apt-get install python
-
-* Install :ref:`make`::
-
-    apt-get install make
-
-* Install :ref:`pip`::
-
-    apt-get install pip
-    pip install --upgrade pip
-
-* Install :ref:`virtualenv` and :ref:`virtualenvwrapper` (optional)::
-
-    pip install virtualenv virtualenvwrapper
-
-  Create a `virtualenv`_ with `virtualenvwrapper`_ (optional)::
-
-    mkvirtualenv provis
-    workon provis
 
 
 Install the Provis Package
@@ -102,17 +72,97 @@ Install Python requirements::
 .. _virtualenvwrapper: http://virtualenvwrapper.readthedocs.org/en/latest/
 
 
+
+Install Build Requirements
+----------------------------
+
+Ubuntu 12.04 LTS
+~~~~~~~~~~~~~~~~~~
+
+Install make, build requirements:
+
+   apt-get install make python pip
+
+* Install :ref:`make`::
+
+   apt-get install make
+
+* Install :ref:`pip`::
+
+   apt-get install pip
+   pip install --upgrade pip
+
+* Install :ref:`virtualenv` and :ref:`virtualenvwrapper` (optional)::
+
+   pip install virtualenv virtualenvwrapper
+
+  Create a `virtualenv`_ with `virtualenvwrapper`_ (optional)::
+
+   mkvirtualenv provis
+   workon provis
+
+
 Usage
 =======
 
-Run the Makefile
------------------
+Tests
+--------
+Run the Provis Python package tests with the current environment::
+
+
+   ## Check localhost
+   python runtests.py  # python setup.py test
+
+   ## Check reference set
+   python runtests.py tests/provis_tests.py
+
+Run the Provis Python package tests with tox and many environments::
+
+   tox
+
+
+Makefile
+----------
+Install ``make`` (if it is not already installed)::
+
+   sudo apt-get install make
+
+List ``Makefile`` command descriptions::
+
+   make help
+   make 
+
+::
+
+   #cd ./provis
+   ls -al
+
+::
+
+   $EDITOR Makefile
+
 
 Run ``make`` with the :ref:`Makefile`::
 
-    cd ./provis
-    make
-    make help
+
+   cd ./provis
+   make
+   make help
+   make setup
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 Patterns
@@ -132,6 +182,8 @@ Contributing
 
 License
 =========
+
+* Free software: `BSD license <#license>`_
 
 .. include:: ../LICENSE
 
