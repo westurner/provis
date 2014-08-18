@@ -1,6 +1,6 @@
-#[submodule "pillar"]
-#	path = pillar
-#	url = 
+;[submodule "pillar"]
+	;path = pillar
+	;url = 
 
 [submodule "docker_docker-containers"]
 	path = docker/docker-containers
@@ -102,13 +102,13 @@
 	path = salt/formulas/tftp-formula
 	url = ssh://git@github.com/westurner/tftp-formula
 
-[submodule "salt_formulas_mercurial-server-formula"]
-	path = salt/formulas/mercurial-server-formula
-	url = 
+;[submodule "salt_formulas_mercurial-server-formula"]
+	;path = salt/formulas/mercurial-server-formula
+	;url = 
 
-[submodule "salt_formulas_elasticsearch-formula"]
-	path = salt/formulas/elasticsearch-formula
-	url = 
+;[submodule "salt_formulas_elasticsearch-formula"]
+	;path = salt/formulas/elasticsearch-formula
+	;url = 
 
 [submodule "salt_formulas_ntp-formula"]
 	path = salt/formulas/ntp-formula
@@ -126,13 +126,13 @@
 	path = salt/formulas/ocean-formula/ocean/files/nginx/5785638
 	url = https://gist.github.com/5785638.git
 
-[submodule "salt_formulas_ocean-formula_ocean_files_etc"]
-	path = salt/formulas/ocean-formula/ocean/files/etc
-	url = 
+;[submodule "salt_formulas_ocean-formula_ocean_files_etc"]
+	;path = salt/formulas/ocean-formula/ocean/files/etc
+	;url = 
 
-[submodule "salt_formulas_ocean-formula"]
-	path = salt/formulas/ocean-formula
-	url = 
+;[submodule "salt_formulas_ocean-formula"]
+	;path = salt/formulas/ocean-formula
+	;url = 
 
 [submodule "salt_formulas_packer-formula"]
 	path = salt/formulas/packer-formula
@@ -170,9 +170,9 @@
 	path = salt/formulas/dotfiles-formula
 	url = ssh://git@github.com/westurner/dotfiles-formula
 
-[submodule "salt_formulas_dotfiles-formula.orig"]
-	path = salt/formulas/dotfiles-formula.orig
-	url = 
+;[submodule "salt_formulas_dotfiles-formula.orig"]
+	;path = salt/formulas/dotfiles-formula.orig
+	;url = 
 
 [submodule "salt_formulas_users-formula"]
 	path = salt/formulas/users-formula
