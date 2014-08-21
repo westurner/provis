@@ -351,11 +351,15 @@ salt_local_pillar_json:
 
 salt_local_pillar_pprint:
 	## Print local pillar with pprint
-	$(SALT_CALL_LOCAL) piller.items --output=pprint
+	$(SALT_CALL_LOCAL) pillar.items --output=pprint
 
 salt_local_highstate:
 	## Run salt with local configset
 	$(SALT_CALL_LOCAL) state.highstate
+
+salt_local_highstate_test:
+	## Run salt with localconfigset and test=True
+	$(SALT_CALL_LOCAL) state.highstate test=True
 
 salt_local_highstate_debug:
 	## Run salt with local configset and debug logging
