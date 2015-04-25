@@ -1,0 +1,116 @@
+drwxrwxr-x  13 wturner wturner 4096 Apr 25 06:21 .
+drwxr-xr-x   5 wturner wturner 4096 Apr 15 14:01 ./base
+lrwxrwxrwx   1 wturner wturner   28 May 17  2014 ./base/apt -> ../formulas/apt-formula/apt/
+lrwxrwxrwx   1 wturner wturner   48 May 14  2014 ./base/apt-cacher-ng -> ../formulas/apt-cacher-ng-formula/apt-cacher-ng/
+lrwxrwxrwx   1 wturner wturner   30 Aug  8  2014 ./base/bind -> ../formulas/bind-formula/bind/
+lrwxrwxrwx   1 wturner wturner   35 May 15  2014 ./base/cobbler -> ../formulas/cobbler-formula/cobbler
+lrwxrwxrwx   1 wturner wturner   32 Aug  8  2014 ./base/dhcpd -> ../formulas/dhcpd-formula/dhcpd/
+lrwxrwxrwx   1 wturner wturner   36 May 15  2014 ./base/dnsmasq -> ../formulas/dnsmasq-formula/dnsmasq/
+lrwxrwxrwx   1 wturner wturner   34 Apr 15 13:58 ./base/docker -> ../formulas/docker-formula/docker/
+lrwxrwxrwx   1 wturner wturner   34 Jul 22  2014 ./base/dyndns -> ../formulas/dyndns-formula/dyndns/
+lrwxrwxrwx   1 wturner wturner   28 May 15  2014 ./base/git -> ../formulas/git-formula/git/
+lrwxrwxrwx   1 wturner wturner   34 May 15  2014 ./base/gitlab -> ../formulas/gitlab-formula/gitlab/
+lrwxrwxrwx   1 wturner wturner   30 Apr 22  2014 ./base/heka -> ../formulas/heka-formula/heka/
+drwxr-xr-x  11 wturner wturner 4096 Jul 30  2014 ./base/hosts
+lrwxrwxrwx   1 wturner wturner   40 Apr 22  2014 ./base/hostsfile -> ../formulas/hostsfile-formula/hostsfile/
+lrwxrwxrwx   1 wturner wturner   30 Apr 22  2014 ./base/htop -> ../formulas/htop-formula/htop/
+lrwxrwxrwx   1 wturner wturner   30 May 17  2014 ./base/i3wm -> ../formulas/i3wm-formula/i3wm/
+lrwxrwxrwx   1 wturner wturner   40 May 17  2014 ./base/mercurial -> ../formulas/mercurial-formula/mercurial/
+lrwxrwxrwx   1 wturner wturner   54 May 15  2014 ./base/mercurial-server -> ../formulas/mercurial-server-formula/mercurial-server/
+drwxr-xr-x   2 wturner wturner 4096 Mar 30 04:55 ./base/_modules
+drwxr-xr-x   2 wturner wturner 4096 Mar 28 14:33 ./base/network
+lrwxrwxrwx   1 wturner wturner   32 Apr 22  2014 ./base/nginx -> ../formulas/nginx-formula/nginx/
+lrwxrwxrwx   1 wturner wturner   28 May 15  2014 ./base/ntp -> ../formulas/ntp-formula/ntp/
+lrwxrwxrwx   1 wturner wturner   32 Apr 22  2014 ./base/ocean -> ../formulas/ocean-formula/ocean/
+lrwxrwxrwx   1 wturner wturner   36 Apr 22  2014 ./base/openssh -> ../formulas/openssh-formula/openssh/
+lrwxrwxrwx   1 wturner wturner   33 May 17  2014 ./base/packer -> ../formulas/packer-formula/packer
+lrwxrwxrwx   1 wturner wturner   33 May 17  2014 ./base/python -> ../formulas/python-formula/python
+lrwxrwxrwx   1 wturner wturner   38 Apr 22  2014 ./base/resolver -> ../formulas/resolver-formula/resolver/
+lrwxrwxrwx   1 wturner wturner   30 Apr 22  2014 ./base/salt -> ../formulas/salt-formula/salt/
+lrwxrwxrwx   1 wturner wturner   40 Jul 16  2014 ./base/shorewall -> ../formulas/shorewall-formula/shorewall/
+lrwxrwxrwx   1 wturner wturner   36 Jul 27  2014 ./base/sudoers -> ../formulas/sudoers-formula/sudoers/
+lrwxrwxrwx   1 wturner wturner   30 Aug  8  2014 ./base/tftp -> ../formulas/tftp-formula/tftp/
+lrwxrwxrwx   1 wturner wturner   30 Apr 30  2014 ./base/tmux -> ../formulas/tmux-formula/tmux/
+lrwxrwxrwx   1 wturner wturner   41 May 17  2014 ./base/tortoisehg -> ../formulas/tortoisehg-formula/tortoisehg
+lrwxrwxrwx   1 wturner wturner   28 Apr 22  2014 ./base/ufw -> ../formulas/ufw-formula/ufw/
+lrwxrwxrwx   1 wturner wturner   32 Jul 25  2014 ./base/users -> ../formulas/users-formula/users/
+lrwxrwxrwx   1 wturner wturner   35 May 17  2014 ./base/vagrant -> ../formulas/vagrant-formula/vagrant
+lrwxrwxrwx   1 wturner wturner   29 Jul 24  2014 ./base/virt -> ../formulas/virt-formula/virt
+lrwxrwxrwx   1 wturner wturner   42 May 17  2014 ./base/virtualbox -> ../formulas/virtualbox-formula/virtualbox/
+lrwxrwxrwx   1 wturner wturner   40 May 17  2014 ./base/winswitch -> ../formulas/winswitch-formula/winswitch/
+drwxr-xr-x   5 wturner wturner 4096 Sep 13  2014 ./dev
+drwxr-xr-x   3 wturner wturner 4096 Sep 13  2014 ./dev/bind
+drwxr-xr-x   2 wturner wturner 4096 Jul 30  2014 ./dev/services
+drwxr-xr-x   2 wturner wturner 4096 Jul 30  2014 ./dev/states
+drwxr-xr-x   4 wturner wturner 4096 Jul 24  2014 ./etc
+drwxr-xr-x   2 wturner wturner 4096 Jul 24  2014 ./etc/cloud.profiles.d
+drwxr-xr-x   2 wturner wturner 4096 Jul 24  2014 ./etc/cloud.providers.d
+drwxr-xr-x   2 wturner wturner 4096 Jul 30  2014 ./ext
+drwxr-xr-x  55 wturner wturner 4096 Apr 10 16:08 ./formulas
+drwxr-xr-x   5 wturner wturner 4096 Jul 30  2014 ./formulas/apt-cacher-ng-formula
+drwxr-xr-x   4 wturner wturner 4096 Aug  6  2014 ./formulas/apt-formula
+drwxr-xr-x   4 wturner wturner 4096 Apr 21  2014 ./formulas/bind-formula
+drwxr-xr-x   5 wturner wturner 4096 Jul 28  2014 ./formulas/cobbler-formula
+drwxr-xr-x   4 wturner wturner 4096 Aug  8  2014 ./formulas/dhcpd-formula
+drwxr-xr-x   4 wturner wturner 4096 Jul 22  2014 ./formulas/disks-formula
+drwxr-xr-x   4 wturner wturner 4096 Aug  9  2014 ./formulas/dnsmasq-formula
+drwxr-xr-x   4 wturner wturner 4096 Apr 15 13:32 ./formulas/docker-formula
+drwxr-xr-x   5 wturner wturner 4096 Apr  7 02:36 ./formulas/dotfiles-formula
+drwxr-xr-x   4 wturner wturner 4096 May 18  2014 ./formulas/dotfiles-formula.orig
+drwxr-xr-x   3 wturner wturner 4096 Jul 22  2014 ./formulas/dyndns-formula
+drwxr-xr-x   5 wturner wturner 4096 Aug 18  2014 ./formulas/elasticsearch-formula
+drwxr-xr-x   4 wturner wturner 4096 May 15  2014 ./formulas/git-formula
+drwxr-xr-x   4 wturner wturner 4096 May 15  2014 ./formulas/gitlab-formula
+drwxr-xr-x   5 wturner wturner 4096 Jul 27  2014 ./formulas/heka-formula
+drwxr-xr-x   4 wturner wturner 4096 Jul 27  2014 ./formulas/hostsfile-formula
+drwxr-xr-x   6 wturner wturner 4096 Jul 28  2014 ./formulas/htop-formula
+drwxr-xr-x   5 wturner wturner 4096 Jul 27  2014 ./formulas/i3wm-formula
+drwxr-xr-x   5 wturner wturner 4096 Aug  5  2014 ./formulas/ipython-formula
+drwxr-xr-x   4 wturner wturner 4096 Jul 22  2014 ./formulas/jenkins-formula
+drwxr-xr-x   4 wturner wturner 4096 Jul 27  2014 ./formulas/libvirt-formula
+drwxr-xr-x   5 wturner wturner 4096 Jul 26  2014 ./formulas/mercurial-formula
+drwxr-xr-x   4 wturner wturner 4096 Jul 26  2014 ./formulas/mercurial-server-formula
+drwxr-xr-x   2 wturner wturner 4096 Jul 27  2014 ./formulas/modprobe-formula.TODO
+drwxr-xr-x   4 wturner wturner 4096 Jul 27  2014 ./formulas/mysql-formula
+drwxr-xr-x   4 wturner wturner 4096 Aug 11  2014 ./formulas/nginx-formula
+drwxr-xr-x   4 wturner wturner 4096 Jul 27  2014 ./formulas/ntp-formula
+drwxr-xr-x   4 wturner wturner 4096 Apr 22  2014 ./formulas/ocean-formula
+drwxr-xr-x   4 wturner wturner 4096 Apr  3 16:56 ./formulas/openssh-formula
+drwxr-xr-x   5 wturner wturner 4096 Jul 28  2014 ./formulas/packer-formula
+drwxr-xr-x   4 wturner wturner 4096 Jul 27  2014 ./formulas/postgres-formula
+lrwxrwxrwx   1 wturner wturner   48 Apr 21  2014 ./formulas/provis-template -> /home/wturner/wrk/.ve/provis/src/provis-template
+drwxr-xr-x   5 wturner wturner 4096 Jul 27  2014 ./formulas/python-formula
+drwxr-xr-x   4 wturner wturner 4096 May 18  2014 ./formulas/python-formula.org
+drwxr-xr-x   5 wturner wturner 4096 Aug  6  2014 ./formulas/repos-formula
+drwxr-xr-x   4 wturner wturner 4096 Apr 21  2014 ./formulas/resolver-formula
+drwxr-xr-x   4 wturner wturner 4096 Apr 21  2014 ./formulas/ruby-formula
+drwxr-xr-x   3 wturner wturner 4096 Jul 27  2014 ./formulas/saltdev-formula.TODO
+drwxr-xr-x   5 wturner wturner 4096 Apr  6 23:04 ./formulas/salt-formula
+drwxr-xr-x   5 wturner wturner 4096 Aug  6  2014 ./formulas/shinken-formula
+drwxr-xr-x   5 wturner wturner 4096 Sep 13  2014 ./formulas/shorewall-formula
+drwxr-xr-x   4 wturner wturner 4096 Jul 27  2014 ./formulas/sudoers-formula
+drwxr-xr-x   4 wturner wturner 4096 Apr 21  2014 ./formulas/sun-java-formula
+drwxr-xr-x   5 wturner wturner 4096 Aug  6  2014 ./formulas/supervisord-formula
+drwxr-xr-x   4 wturner wturner 4096 Aug  8  2014 ./formulas/tftp-formula
+drwxr-xr-x   4 wturner wturner 4096 Dec 20 04:25 ./formulas/tmux-formula
+drwxr-xr-x   5 wturner wturner 4096 Jul 28  2014 ./formulas/tortoisehg-formula
+drwxr-xr-x   5 wturner wturner 4096 Aug  6  2014 ./formulas/ufw-formula
+drwxr-xr-x   4 wturner wturner 4096 Apr 10 16:09 ./formulas/users-formula
+drwxr-xr-x   5 wturner wturner 4096 Jul 27  2014 ./formulas/vagrant-formula
+drwxr-xr-x   4 wturner wturner 4096 Jul 24  2014 ./formulas/virt-formula
+drwxr-xr-x   5 wturner wturner 4096 Jul 28  2014 ./formulas/virtualbox-formula
+drwxr-xr-x   5 wturner wturner 4096 Aug  6  2014 ./formulas/wajig-formula
+drwxr-xr-x   5 wturner wturner 4096 Jul 27  2014 ./formulas/winswitch-formula
+drwxr-xr-x   8 wturner wturner 4096 Apr 25 06:21 ./.git
+drwxr-xr-x   2 wturner wturner 4096 Jul 25  2014 ./.git/branches
+drwxr-xr-x   2 wturner wturner 4096 Jul 25  2014 ./.git/hooks
+drwxr-xr-x   2 wturner wturner 4096 Jul 25  2014 ./.git/info
+drwxr-xr-x   3 wturner wturner 4096 Jul 26  2014 ./.git/logs
+drwxr-xr-x 181 wturner wturner 4096 Jul 26  2014 ./.git/objects
+drwxr-xr-x   4 wturner wturner 4096 Jul 25  2014 ./.git/refs
+drwxr-xr-x   2 wturner wturner 4096 Jul 30  2014 ./prod
+drwxr-xr-x   2 wturner wturner 4096 Jul 30  2014 ./qa
+drwxr-xr-x   3 wturner wturner 4096 Jul 25  2014 ./src
+drwxr-xr-x   7 wturner wturner 4096 Jul 25  2014 ./src/pyrpo
+drwxr-xr-x   2 wturner wturner 4096 Mar 30 04:26 ./_states
+drwxr-xr-x   2 wturner wturner 4096 Apr 26  2014 ./_templates

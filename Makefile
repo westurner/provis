@@ -867,4 +867,12 @@ edit:
 		pillar/ \
 		vagrant/Vagrantfile
 
+salt_dev_report:
+	#TODO: git receive hooks / GitFS
+	(cd salt; find . -maxdepth 2 -type d -or -type l \
+		| sort \
+		| xargs ls -dl > pyrpo.ls-dl.log)
+	(cd salt; pyrpo -s . -r full > pyrpo.full.log)
+	(cd salt; pyrpo -s . -r sh > pyrpo.sh.log)
+	(cd salt; pyrpo -s . -r status > pyrpo.status.log)
 
