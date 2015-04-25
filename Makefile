@@ -318,6 +318,8 @@ salt_mount_local:
 	sudo mount -o bind ./pillar /srv/pillar \
 		| logger --tag=salt.mount >> $(VARLOG)/salt-bootstrap-mount.log
 
+salt_mount: salt_mount_local
+
 
 salt_local_test:
 	## Test local salt configuration
@@ -425,15 +427,15 @@ salt_init_minion_check:
 
 salt_init_minion_tail:
 	## Tail salt init minion log
-	sudo tail -f /var/log/salt/minion || true
+	sudo tail -n20 -f /var/log/salt/minion || true
 
 salt_init_master_tail:
 	## Tail salt init master log
-	sudo tail -f /var/log/salt/master || true
+	sudo tail -n20 -f /var/log/salt/master || true
 
 salt_init_tail_follow:
 	## Tail salt init minion and master logs
-	sudo tail -f /var/log/salt/minion /var/log/salt/master
+	sudo tail -n20 -f /var/log/salt/minion /var/log/salt/master
 
 
 
