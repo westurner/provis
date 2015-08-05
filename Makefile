@@ -283,9 +283,13 @@ vagrant_ssh_rod_salt:
 salt_setup: salt_bootstrap salt_mount
 	## Bootstrap a local salt minion and mount salt directories into /srv/salt
 
+salt_bootstrap_download_to_scripts:
+	@#wget -O - http://bootstrap.saltstack.org > scripts/bootstrap-salt.sh
+	wget -O - https://raw.githubusercontent.com/saltstack/salt-bootstrap/develop/bootstrap-salt.sh > scripts/bootstrap-salt.sh
+	gd scripts/bootstrap-salt.sh
+	# ln -s ./scripts/bootstrap-salt.sh ./scripts/salt-bootstrap.sh
+
 salt_bootstrap: salt_bootstrap_minion
-	## Bootrap salt minion
-	#wget -O - http://bootstrap.saltstack.org > scripts/salt-bootstrap.sh
 
 salt_bootstrap_minion:
 	## Bootstrap a salt minion
