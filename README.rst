@@ -13,7 +13,7 @@ README
 
 | Docs: https://provis.readthedocs.org/en/latest/
 | Source: git https://github.com/westurner/provis
-| Source: git ssh://git@github.com/westurner/provis
+| Source: git `<ssh://git@github.com/westurner/provis>`__
 | Issues: https://github.com/westurner/provis/issues
 
 
