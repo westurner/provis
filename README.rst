@@ -11,9 +11,11 @@ README
 .. ..  image:: https://pypip.in/d/provis/badge.png
 ..         :target: https://crate.io/packages/provis?version=latest
 
-`Docs <https://provis.readthedocs.org/>`_ |
-`Github <https://github.com/westurner/provis>`_ |
-`Issues <https://github.com/westurner/provis/issues>`_
+| Docs: https://provis.readthedocs.org/en/latest/
+| Source: git https://github.com/westurner/provis
+| Source: git ssh://git@github.com/westurner/provis
+| Issues: https://github.com/westurner/provis/issues
+
 
 Provis
 ========
