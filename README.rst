@@ -1,15 +1,13 @@
 ===============================
-README
+Provis README.rst
 ===============================
 
-.. ..  image:: https://badge.fury.io/py/provis.png
-..        :target: http://badge.fury.io/py/provis
 
 .. ..  image:: https://travis-ci.org/westurner/provis.png?branch=master
 ..         :target: https://travis-ci.org/westurner/provis
 
-.. ..  image:: https://pypip.in/d/provis/badge.png
-..         :target: https://crate.io/packages/provis?version=latest
+.. .. image:: https://img.shields.io/pypi/v/{{ cookiecutter.repo_name }}.svg
+..        :target: https://pypi.python.org/pypi/{{ cookiecutter.repo_name }}
 
 | Docs: https://provis.readthedocs.org/en/latest/
 | Source: git https://github.com/westurner/provis
@@ -20,16 +18,53 @@ README
 Provis
 ========
 
-Infrastructure Provisioning Scripts and Configuration Sets
-
-`A Python package`_ with a few tests, system bootstrap scripts, and a Makefile
+Provis is an infrastructure-as-code project
 for building and configuring cloud servers with a number of helpful
-`tools`_:
+`tools`_.
+
+File contents:
+
+Makefile
+    The provis Makefile should contain documented examples of many system provisioning commands.
+
+``./scripts``
+    * system bootstrap scripts in shell, python, salt
+
+``./salt``
+    salt formula git submodules
+    
+``./tests``
+    a few tests
+
+``./docs``
+   * [o] Draft project documentation
+   * [o] Tools docs
+
+      * http://provis.readthedocs.org/en/latest/tools.html
+      * Now maintained separately as https://westurner.org/tools/
+        and in context: https://wrdrd.com/docs/tools/
+
+
+    Packer
+      Packer is a open source tool for building cloud images (Go)
+    
+    Vagrant
+      Vagrant is an open source tool for managing (teams of) virtual instances (Ruby)
+      
+    Salt
+      Salt is an open source configuration management system (Python)
+      
+    See also:
+    
+    * https://wrdrd.com/docs/tools/
+    * https://wrdrd.com/docs/consulting/information-systems#cloud-application-layers
+
+
+Platforms of development
 
 * Ubuntu Linux
-* Packer (Go)
-* Vagrant (Ruby)
-* Salt (Python)
+* Fedora
+
 
 .. _A Python package: http://provis.readthedocs.org/en/latest/products.html#provis-package
 .. _tools: http://provis.readthedocs.org/en/latest/tools.html
@@ -40,9 +75,9 @@ for building and configuring cloud servers with a number of helpful
 
 Installation
 ============
-* `Install build requirements`_
-* `Install the Provis Package`_
 
+* `Install the Provis Package`_
+* `Install build requirements`_
 
 Install the Provis Package
 ----------------------------
