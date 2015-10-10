@@ -33,19 +33,19 @@ to help organize commits:
 
 ::
 
-    FEAT: Feature
+    ENH: Enhancement / Feature
     BUG: Bug
     DOC: Documentation
     TST: Test
     BLD: Build
-    PERF: Performance
+    PRF: Performance
     CLN: Cleanup
     SEC: Security
 
 
 Commit Messages::
 
-    FEAT: Add new feature (closes #3)
+    ENH: Add new feature (closes #3)
     FIX: Fixes #3
 
 
@@ -56,16 +56,15 @@ Separate multiple tags with a comma::
 
 
 
-.. _feat:
+.. _enh:
 
-FEAT: Feature
-===============
-Implement Features
+ENH: Enhancement
+==================
 
-Look through the GitHub issues for features. Anything tagged with "FEAT"
+Look through the GitHub issues for features. Anything tagged with "ENH"
 is open to whoever wants to implement it.
 
-If you are proposing a feature (FEAT):
+If you are proposing a feature (ENH):
 
 * Explain in detail how it would work.
 * Keep the scope as narrow as possible, to make it easier to implement.
@@ -119,9 +118,9 @@ TST: Test
 BLD: Build
 ============
 
-.. _perf:
+.. _prf:
 
-PERF: Performance
+PRF: Performance
 ===================
 
 .. _cln:
