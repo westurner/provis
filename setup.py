@@ -3,7 +3,7 @@
 
 import os
 import sys
-
+import codecs
 
 try:
     from setuptools import setup, Command
@@ -11,15 +11,16 @@ except ImportError:
     from distutils.core import setup, Command
 
 if sys.argv[-1] == 'publish':
-    os.system('python setup.py sdist upload')
+    os.system('python setup.py sdist bdist_wheel')
+    os.system('twine upload dist/*')
     sys.exit()
 
 datadir = os.path.dirname(__file__)
 
-with open(os.path.join(datadir, 'README.rst')) as f:
+with codecs.open(os.path.join(datadir, 'README.rst'), 'utf8') as f:
     readme = f.read()
 
-with open(os.path.join(datadir, 'HISTORY.rst')) as f:
+with codecs.open(os.path.join(datadir, 'HISTORY.rst'), 'utf8') as f:
     history = f.read().replace('.. :changelog:', '')
 
 
