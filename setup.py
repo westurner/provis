@@ -5,6 +5,8 @@ import os
 import sys
 import codecs
 
+VERSION = '0.1.1'
+
 try:
     from setuptools import setup, Command
 except ImportError:
@@ -46,7 +48,7 @@ class PyTestCommand(Command):
 
 setup(
     name='provis',
-    version='0.1.1',
+    version=VERSION,
     description=(
         'Infrastructure Provisioning Scripts, Configuration, and Tests'),
     long_description=readme + '\n\n' + history,
