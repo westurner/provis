@@ -124,7 +124,7 @@ makefile_generate_phony_list:
 makefile_test:
 	## Test this Makefile
 	$(MAKE) help
-	$(MAKE) help_list
+	#$(MAKE) help_list
 	$(MAKE) makefile_debug
 	$(MAKE) makefile_debug_search
 	$(MAKE) makefile_generate_phony_list
