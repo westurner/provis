@@ -68,6 +68,8 @@ GLOSSARY_UNDEFINED_TERMS:= docs/_glossary_undefined.rst
 
 TOX_CACHE:= .tox/
 
+BROWSER="web"
+
 SEARCHTERM:=""
 
 # .PHONY ~= Always Run (even if a file with the build step name exists)
@@ -610,7 +612,7 @@ build_coverage_report:
 
 view_coverage_report:
 	## Surf to local coverage report
-	x-www-browser htmlcov/index.html
+	$(BROWSER) htmlcov/index.html
 
 
 release: clean
@@ -783,7 +785,7 @@ docs_s5_rebuild: docs_s5_clean  docs_s5_build
 
 docs_s5_view_local:
 	## View s5 slides
-	x-www-browser $(SLIDES_OUTP)
+	$(BROWSER) $(SLIDES_OUTP)
 
 docs_s5_preview: s5 s5_open
 
@@ -853,11 +855,11 @@ docs_and_rsync_and_view: docs_and_rsync docs_view_hosted
 
 docs_view_local:
 	## Build the docs and surf to local version
-	x-www-browser $(HERE)/docs/_build/html/index.html
+	$(BROWSER) $(HERE)/docs/_build/html/index.html
 
 docs_view_hosted:
 	## Surf to the locally hosted docs
-	x-www-browser "$(DOCS_URL)/"
+	$(BROWSER) "$(DOCS_URL)/"
 
 edit:
 	## Edit the project
