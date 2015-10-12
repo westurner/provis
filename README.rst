@@ -113,24 +113,28 @@ Install Build Requirements
 Ubuntu 12.04 LTS
 ~~~~~~~~~~~~~~~~~~
 
-Install make, build requirements:
+Install make, build requirements
+
+.. code:: bash
 
    apt-get install make python pip
 
-* Install `make`_::
-
-   apt-get install make
-
-* Install `pip`_::
+* Install `pip`_
+  
+.. code:: bash
 
    apt-get install pip
    pip install --upgrade pip
 
-* Install `virtualenv`_ and `virtualenvwrapper`_ (optional)::
+* Install `virtualenv`_ and `virtualenvwrapper`_ (optional)
+  
+.. code:: bash
 
    pip install virtualenv virtualenvwrapper
 
-  Create a `virtualenv`_ with `virtualenvwrapper`_ (optional)::
+* Create a `virtualenv`_ with `virtualenvwrapper`_ (optional)
+  
+.. code:: bash
 
    mkvirtualenv provis
    workon provis
@@ -141,8 +145,17 @@ Usage
 
 Tests
 --------
-Run the Provis Python package tests with the current environment::
+Run the Provis Python package tests with the current environment:
 
+Run tests with `make`_:
+
+.. code:: bash
+
+   make test
+
+Run tests with the *py.test* runtests.py test runner:
+
+.. code:: bash
 
    ## Check localhost
    python runtests.py  # python setup.py test
@@ -150,9 +163,12 @@ Run the Provis Python package tests with the current environment::
    ## Check reference set
    python runtests.py tests/provis_tests.py
 
-Run the Provis Python package tests with tox and many environments::
+Run tests with *tox* and many environments:
+
+.. code:: bash
 
    tox
+   # make tox tox_clean tox_docs tox_style
 
 
 Makefile
@@ -190,5 +206,4 @@ License
 
 * Free software: `BSD license <#license>`_
 
-.. include:: ./LICENSE
 
