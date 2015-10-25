@@ -2,144 +2,387 @@
 [submodule "docker_docker-containers"]
 	path = docker/docker-containers
 	url = https://github.com/saltstack/docker-containers
-[submodule "salt"]
-	path = salt
-	url = ssh://git@github.com/westurner/dotfiles-formula
 [submodule "salt_src_pyrpo"]
 	path = salt/src/pyrpo
 	url = ssh://git@github.com/westurner/pyrpo
-[submodule "salt_formulas_mercurial-formula"]
-	path = salt/formulas/mercurial-formula
+[submodule "formulas_mercurial-formula"]
+	path = formulas/mercurial-formula
 	url = ssh://git@github.com/westurner/mercurial-formula
-[submodule "salt_formulas_docker-formula"]
-	path = salt/formulas/docker-formula
+[submodule "formulas_docker-formula"]
+	path = formulas/docker-formula
 	url = ssh://git@github.com/westurner/docker-formula
-[submodule "salt_formulas_tmux-formula"]
-	path = salt/formulas/tmux-formula
+[submodule "formulas_tmux-formula"]
+	path = formulas/tmux-formula
 	url = ssh://git@github.com/westurner/tmux-formula
-[submodule "salt_formulas_resolver-formula"]
-	path = salt/formulas/resolver-formula
+[submodule "formulas_resolver-formula"]
+	path = formulas/resolver-formula
 	url = ssh://git@github.com/westurner/resolver-formula
-[submodule "salt_formulas_sun-java-formula"]
-	path = salt/formulas/sun-java-formula
+[submodule "formulas_sun-java-formula"]
+	path = formulas/sun-java-formula
 	url = ssh://git@github.com/westurner/sun-java-formula
-[submodule "salt_formulas_postgres-formula"]
-	path = salt/formulas/postgres-formula
+[submodule "formulas_postgres-formula"]
+	path = formulas/postgres-formula
 	url = ssh://git@github.com/westurner/postgres-formula
-[submodule "salt_formulas_salt-formula"]
-	path = salt/formulas/salt-formula
+[submodule "formulas_salt-formula"]
+	path = formulas/salt-formula
 	url = ssh://git@github.com/westurner/salt-formula
-[submodule "salt_formulas_sudoers-formula"]
-	path = salt/formulas/sudoers-formula
+[submodule "formulas_sudoers-formula"]
+	path = formulas/sudoers-formula
 	url = ssh://git@github.com/westurner/sudoers-formula
-[submodule "salt_formulas_supervisord-formula"]
-	path = salt/formulas/supervisord-formula
+[submodule "formulas_supervisord-formula"]
+	path = formulas/supervisord-formula
 	url = ssh://git@github.com/westurner/supervisord-formula
-[submodule "salt_formulas_python-formula"]
-	path = salt/formulas/python-formula
+[submodule "formulas_python-formula"]
+	path = formulas/python-formula
 	url = ssh://git@github.com/westurner/python-formula
-[submodule "salt_formulas_i3wm-formula"]
-	path = salt/formulas/i3wm-formula
+[submodule "formulas_i3wm-formula"]
+	path = formulas/i3wm-formula
 	url = ssh://git@github.com/westurner/i3wm-formula
-[submodule "salt_formulas_winswitch-formula"]
-	path = salt/formulas/winswitch-formula
+[submodule "formulas_winswitch-formula"]
+	path = formulas/winswitch-formula
 	url = ssh://git@github.com/westurner/winswitch-formula
-[submodule "salt_formulas_vagrant-formula"]
-	path = salt/formulas/vagrant-formula
+[submodule "formulas_vagrant-formula"]
+	path = formulas/vagrant-formula
 	url = ssh://git@github.com/westurner/vagrant-formula
-[submodule "salt_formulas_libvirt-formula"]
-	path = salt/formulas/libvirt-formula
+[submodule "formulas_libvirt-formula"]
+	path = formulas/libvirt-formula
 	url = ssh://git@github.com/westurner/libvirt-formula
-[submodule "salt_formulas_jenkins-formula"]
-	path = salt/formulas/jenkins-formula
+[submodule "formulas_jenkins-formula"]
+	path = formulas/jenkins-formula
 	url = ssh://git@github.com/westurner/jenkins-formula
-[submodule "salt_formulas_nginx-formula"]
-	path = salt/formulas/nginx-formula
+[submodule "formulas_nginx-formula"]
+	path = formulas/nginx-formula
 	url = ssh://git@github.com/westurner/nginx-formula
-[submodule "salt_formulas_heka-formula"]
-	path = salt/formulas/heka-formula
+[submodule "formulas_heka-formula"]
+	path = formulas/heka-formula
 	url = ssh://git@github.com/westurner/heka-formula
-[submodule "salt_formulas_openssh-formula"]
-	path = salt/formulas/openssh-formula
+[submodule "formulas_openssh-formula"]
+	path = formulas/openssh-formula
 	url = ssh://git@github.com/westurner/openssh-formula
-[submodule "salt_formulas_dnsmasq-formula"]
-	path = salt/formulas/dnsmasq-formula
+[submodule "formulas_dnsmasq-formula"]
+	path = formulas/dnsmasq-formula
 	url = ssh://git@github.com/westurner/dnsmasq-formula
-[submodule "salt_formulas_bind-formula"]
-	path = salt/formulas/bind-formula
+[submodule "formulas_bind-formula"]
+	path = formulas/bind-formula
 	url = ssh://git@github.com/westurner/bind-formula
-[submodule "salt_formulas_mysql-formula"]
-	path = salt/formulas/mysql-formula
+[submodule "formulas_mysql-formula"]
+	path = formulas/mysql-formula
 	url = ssh://git@github.com/westurner/mysql-formula
-[submodule "salt_formulas_tftp-formula"]
-	path = salt/formulas/tftp-formula
+[submodule "formulas_tftp-formula"]
+	path = formulas/tftp-formula
 	url = ssh://git@github.com/westurner/tftp-formula
-[submodule "salt_formulas_ntp-formula"]
-	path = salt/formulas/ntp-formula
+[submodule "formulas_ntp-formula"]
+	path = formulas/ntp-formula
 	url = ssh://git@github.com/westurner/ntp-formula
-[submodule "salt_formulas_shorewall-formula"]
-	path = salt/formulas/shorewall-formula
+[submodule "formulas_shorewall-formula"]
+	path = formulas/shorewall-formula
 	url = ssh://git@github.com/westurner/shorewall-formula
-[submodule "salt_formulas_shinken-formula"]
-	path = salt/formulas/shinken-formula
+[submodule "formulas_shinken-formula"]
+	path = formulas/shinken-formula
 	url = ssh://git@github.com/westurner/shinken-formula
-[submodule "salt_formulas_ocean-formula_ocean_files_nginx_5785638"]
-	path = salt/formulas/ocean-formula/ocean/files/nginx/5785638
+[submodule "formulas_ocean-formula_ocean_files_nginx_5785638"]
+	path = formulas/ocean-formula/ocean/files/nginx/5785638
 	url = https://gist.github.com/5785638.git
-[submodule "salt_formulas_packer-formula"]
-	path = salt/formulas/packer-formula
+[submodule "formulas_packer-formula"]
+	path = formulas/packer-formula
 	url = ssh://git@github.com/westurner/packer-formula
-[submodule "salt_formulas_tortoisehg-formula"]
-	path = salt/formulas/tortoisehg-formula
+[submodule "formulas_tortoisehg-formula"]
+	path = formulas/tortoisehg-formula
 	url = ssh://git@github.com/westurner/tortoisehg-formula
-[submodule "salt_formulas_python-formula.org"]
-	path = salt/formulas/python-formula.org
+[submodule "formulas_python-formula.org"]
+	path = formulas/python-formula.org
 	url = ssh://git@github.com/westurner/python-formula
-[submodule "salt_formulas_wajig-formula"]
-	path = salt/formulas/wajig-formula
+[submodule "formulas_wajig-formula"]
+	path = formulas/wajig-formula
 	url = ssh://git@github.com/westurner/wajig-formula
-[submodule "salt_formulas_virtualbox-formula"]
-	path = salt/formulas/virtualbox-formula
+[submodule "formulas_virtualbox-formula"]
+	path = formulas/virtualbox-formula
 	url = ssh://git@github.com/westurner/virtualbox-formula
-[submodule "salt_formulas_apt-formula"]
-	path = salt/formulas/apt-formula
+[submodule "formulas_apt-formula"]
+	path = formulas/apt-formula
 	url = ssh://git@github.com/westurner/apt-formula
-[submodule "salt_formulas_htop-formula"]
-	path = salt/formulas/htop-formula
+[submodule "formulas_htop-formula"]
+	path = formulas/htop-formula
 	url = ssh://git@github.com/westurner/htop-formula
-[submodule "salt_formulas_ruby-formula"]
-	path = salt/formulas/ruby-formula
+[submodule "formulas_ruby-formula"]
+	path = formulas/ruby-formula
 	url = ssh://git@github.com/westurner/ruby-formula
-[submodule "salt_formulas_dotfiles-formula"]
-	path = salt/formulas/dotfiles-formula
+[submodule "formulas_dotfiles-formula"]
+	path = formulas/dotfiles-formula
 	url = ssh://git@github.com/westurner/dotfiles-formula
-[submodule "salt_formulas_users-formula"]
-	path = salt/formulas/users-formula
+[submodule "formulas_users-formula"]
+	path = formulas/users-formula
 	url = ssh://git@github.com/westurner/users-formula
-[submodule "salt_formulas_gitlab-formula"]
-	path = salt/formulas/gitlab-formula
+[submodule "formulas_gitlab-formula"]
+	path = formulas/gitlab-formula
 	url = ssh://git@github.com/westurner/gitlab-formula
-[submodule "salt_formulas_ufw-formula"]
-	path = salt/formulas/ufw-formula
+[submodule "formulas_ufw-formula"]
+	path = formulas/ufw-formula
 	url = ssh://git@github.com/westurner/ufw-formula
-[submodule "salt_formulas_ipython-formula"]
-	path = salt/formulas/ipython-formula
+[submodule "formulas_ipython-formula"]
+	path = formulas/ipython-formula
 	url = ssh://git@github.com/westurner/ipython-formula
-[submodule "salt_formulas_repos-formula"]
-	path = salt/formulas/repos-formula
+[submodule "formulas_repos-formula"]
+	path = formulas/repos-formula
 	url = ssh://git@github.com/westurner/repos-formula
-[submodule "salt_formulas_apt-cacher-ng-formula"]
-	path = salt/formulas/apt-cacher-ng-formula
+[submodule "formulas_apt-cacher-ng-formula"]
+	path = formulas/apt-cacher-ng-formula
 	url = ssh://git@github.com/westurner/apt-cacher-ng-formula
-[submodule "salt_formulas_hostsfile-formula"]
-	path = salt/formulas/hostsfile-formula
+[submodule "formulas_hostsfile-formula"]
+	path = formulas/hostsfile-formula
 	url = ssh://git@github.com/westurner/hostsfile-formula
-[submodule "salt_formulas_cobbler-formula"]
-	path = salt/formulas/cobbler-formula
+[submodule "formulas_cobbler-formula"]
+	path = formulas/cobbler-formula
 	url = ssh://git@github.com/westurner/cobbler-formula
-[submodule "salt_formulas_git-formula"]
-	path = salt/formulas/git-formula
+[submodule "formulas_git-formula"]
+	path = formulas/git-formula
 	url = ssh://git@github.com/westurner/git-formula
-[submodule "salt_formulas_dhcpd-formula"]
-	path = salt/formulas/dhcpd-formula
+[submodule "formulas_dhcpd-formula"]
+	path = formulas/dhcpd-formula
 	url = ssh://git@github.com/westurner/dhcpd-formula
+[submodule "formulas_apt-cacher-ng-formula"]
+	path = formulas/apt-cacher-ng-formula
+	url = ssh://git@github.com/westurner/apt-cacher-ng-formula
+[submodule "formulas_apt-formula"]
+	path = formulas/apt-formula
+	url = ssh://git@github.com/westurner/apt-formula
+[submodule "formulas_bind-formula"]
+	path = formulas/bind-formula
+	url = ssh://git@github.com/saltstack-formulas/bind-formula
+[submodule "formulas_dhcpd-formula"]
+	path = formulas/dhcpd-formula
+	url = ssh://git@github.com/westurner/dhcpd-formula
+[submodule "formulas_dnsmasq-formula"]
+	path = formulas/dnsmasq-formula
+	url = https://github.com/saltstack-formulas/dnsmasq-formula
+[submodule "formulas_docker-formula"]
+	path = formulas/docker-formula
+	url = ssh://git@github.com/saltstack-formulas/docker-formula
+[submodule "formulas_dotfiles-formula"]
+	path = formulas/dotfiles-formula
+	url = ssh://git@github.com/westurner/dotfiles-formula
+[submodule "formulas_git-formula"]
+	path = formulas/git-formula
+	url = ssh://git@github.com/saltstack-formulas/git-formula
+[submodule "formulas_gitlab-formula"]
+	path = formulas/gitlab-formula
+	url = ssh://git@github.com/saltstack-formulas/gitlab-formula
+[submodule "formulas_heka-formula"]
+	path = formulas/heka-formula
+	url = ssh://git@github.com/westurner/heka-formula
+[submodule "formulas_hostsfile-formula"]
+	path = formulas/hostsfile-formula
+	url = ssh://git@github.com/saltstack-formulas/hostsfile-formula
+[submodule "formulas_htop-formula"]
+	path = formulas/htop-formula
+	url = ssh://git@github.com/westurner/htop-formula
+[submodule "formulas_i3wm-formula"]
+	path = formulas/i3wm-formula
+	url = ssh://git@github.com/westurner/i3wm-formula
+[submodule "formulas_ipython-formula"]
+	path = formulas/ipython-formula
+	url = ssh://git@github.com/westurner/ipython-formula
+[submodule "formulas_jenkins-formula"]
+	path = formulas/jenkins-formula
+	url = ssh://git@github.com/saltstack-formulas/jenkins-formula
+[submodule "formulas_libvirt-formula"]
+	path = formulas/libvirt-formula
+	url = https://github.com/saltstack-formulas/libvirt-formula
+[submodule "formulas_mercurial-formula"]
+	path = formulas/mercurial-formula
+	url = ssh://git@github.com/westurner/mercurial-formula
+[submodule "formulas_mysql-formula"]
+	path = formulas/mysql-formula
+	url = ssh://git@github.com/saltstack-formulas/mysql-formula
+[submodule "formulas_nginx-formula"]
+	path = formulas/nginx-formula
+	url = ssh://git@github.com/saltstack-formulas/nginx-formula
+[submodule "formulas_ntp-formula"]
+	path = formulas/ntp-formula
+	url = ssh://git@github.com/saltstack-formulas/ntp-formula
+[submodule "formulas_openssh-formula"]
+	path = formulas/openssh-formula
+	url = ssh://git@github.com/saltstack-formulas/openssh-formula
+[submodule "formulas_packer-formula"]
+	path = formulas/packer-formula
+	url = ssh://git@github.com/westurner/packer-formula
+[submodule "formulas_postgres-formula"]
+	path = formulas/postgres-formula
+	url = ssh://git@github.com/saltstack-formulas/postgres-formula
+[submodule "formulas_python-formula.org"]
+	path = formulas/python-formula.org
+	url = ssh://git@github.com/westurner/python-formula
+[submodule "formulas_python-formula"]
+	path = formulas/python-formula
+	url = ssh://git@github.com/westurner/python-formula
+[submodule "formulas_repos-formula"]
+	path = formulas/repos-formula
+	url = ssh://git@github.com/westurner/repos-formula
+[submodule "formulas_resolver-formula"]
+	path = formulas/resolver-formula
+	url = ssh://git@github.com/saltstack-formulas/resolver-formula
+[submodule "formulas_ruby-formula"]
+	path = formulas/ruby-formula
+	url = ssh://git@github.com/saltstack-formulas/ruby-formula
+[submodule "formulas_salt-formula"]
+	path = formulas/salt-formula
+	url = ssh://git@github.com/saltstack-formulas/salt-formula
+[submodule "formulas_shinken-formula"]
+	path = formulas/shinken-formula
+	url = ssh://git@github.com/westurner/shinken-formula
+[submodule "formulas_sudoers-formula"]
+	path = formulas/sudoers-formula
+	url = ssh://git@github.com/saltstack-formulas/sudoers-formula
+[submodule "formulas_sun-java-formula"]
+	path = formulas/sun-java-formula
+	url = ssh://git@github.com/saltstack-formulas/sun-java-formula
+[submodule "formulas_supervisord-formula"]
+	path = formulas/supervisord-formula
+	url = ssh://git@github.com/westurner/supervisord-formula
+[submodule "formulas_tftp-formula"]
+	path = formulas/tftp-formula
+	url = ssh://git@github.com/westurner/tftp-formula
+[submodule "formulas_tmux-formula"]
+	path = formulas/tmux-formula
+	url = ssh://git@github.com/saltstack-formulas/tmux-formula
+[submodule "formulas_tortoisehg-formula"]
+	path = formulas/tortoisehg-formula
+	url = ssh://git@github.com/westurner/tortoisehg-formula
+[submodule "formulas_ufw-formula"]
+	path = formulas/ufw-formula
+	url = ssh://git@github.com/westurner/ufw-formula
+[submodule "formulas_vagrant-formula"]
+	path = formulas/vagrant-formula
+	url = ssh://git@github.com/westurner/vagrant-formula
+[submodule "formulas_virtualbox-formula"]
+	path = formulas/virtualbox-formula
+	url = ssh://git@github.com/westurner/virtualbox-formula
+[submodule "formulas_wajig-formula"]
+	path = formulas/wajig-formula
+	url = ssh://git@github.com/westurner/wajig-formula
+[submodule "formulas_winswitch-formula"]
+	path = formulas/winswitch-formula
+	url = ssh://git@github.com/westurner/winswitch-formula
+[submodule "formulas/apt-cacher-ng-formula"]
+	path = formulas/apt-cacher-ng-formula
+	url = ssh://git@github.com/westurner/apt-cacher-ng-formula
+[submodule "formulas/apt-formula"]
+	path = formulas/apt-formula
+	url = ssh://git@github.com/westurner/apt-formula
+[submodule "formulas/bind-formula"]
+	path = formulas/bind-formula
+	url = ssh://git@github.com/saltstack-formulas/bind-formula
+[submodule "formulas/dhcpd-formula"]
+	path = formulas/dhcpd-formula
+	url = ssh://git@github.com/westurner/dhcpd-formula
+[submodule "formulas/dnsmasq-formula"]
+	path = formulas/dnsmasq-formula
+	url = https://github.com/saltstack-formulas/dnsmasq-formula
+[submodule "formulas/docker-formula"]
+	path = formulas/docker-formula
+	url = ssh://git@github.com/saltstack-formulas/docker-formula
+[submodule "formulas/dotfiles-formula"]
+	path = formulas/dotfiles-formula
+	url = ssh://git@github.com/westurner/dotfiles-formula
+[submodule "formulas/git-formula"]
+	path = formulas/git-formula
+	url = ssh://git@github.com/saltstack-formulas/git-formula
+[submodule "formulas/gitlab-formula"]
+	path = formulas/gitlab-formula
+	url = ssh://git@github.com/saltstack-formulas/gitlab-formula
+[submodule "formulas/heka-formula"]
+	path = formulas/heka-formula
+	url = ssh://git@github.com/westurner/heka-formula
+[submodule "formulas/hostsfile-formula"]
+	path = formulas/hostsfile-formula
+	url = ssh://git@github.com/saltstack-formulas/hostsfile-formula
+[submodule "formulas/htop-formula"]
+	path = formulas/htop-formula
+	url = ssh://git@github.com/westurner/htop-formula
+[submodule "formulas/i3wm-formula"]
+	path = formulas/i3wm-formula
+	url = ssh://git@github.com/westurner/i3wm-formula
+[submodule "formulas/ipython-formula"]
+	path = formulas/ipython-formula
+	url = ssh://git@github.com/westurner/ipython-formula
+[submodule "formulas/jenkins-formula"]
+	path = formulas/jenkins-formula
+	url = ssh://git@github.com/saltstack-formulas/jenkins-formula
+[submodule "formulas/libvirt-formula"]
+	path = formulas/libvirt-formula
+	url = https://github.com/saltstack-formulas/libvirt-formula
+[submodule "formulas/mercurial-formula"]
+	path = formulas/mercurial-formula
+	url = ssh://git@github.com/westurner/mercurial-formula
+[submodule "formulas/mysql-formula"]
+	path = formulas/mysql-formula
+	url = ssh://git@github.com/saltstack-formulas/mysql-formula
+[submodule "formulas/nginx-formula"]
+	path = formulas/nginx-formula
+	url = ssh://git@github.com/saltstack-formulas/nginx-formula
+[submodule "formulas/ntp-formula"]
+	path = formulas/ntp-formula
+	url = ssh://git@github.com/saltstack-formulas/ntp-formula
+[submodule "formulas/openssh-formula"]
+	path = formulas/openssh-formula
+	url = ssh://git@github.com/saltstack-formulas/openssh-formula
+[submodule "formulas/packer-formula"]
+	path = formulas/packer-formula
+	url = ssh://git@github.com/westurner/packer-formula
+[submodule "formulas/postgres-formula"]
+	path = formulas/postgres-formula
+	url = ssh://git@github.com/saltstack-formulas/postgres-formula
+[submodule "formulas/python-formula"]
+	path = formulas/python-formula
+	url = ssh://git@github.com/westurner/python-formula
+[submodule "formulas/python-formula.org"]
+	path = formulas/python-formula.org
+	url = ssh://git@github.com/westurner/python-formula
+[submodule "formulas/repos-formula"]
+	path = formulas/repos-formula
+	url = ssh://git@github.com/westurner/repos-formula
+[submodule "formulas/resolver-formula"]
+	path = formulas/resolver-formula
+	url = ssh://git@github.com/saltstack-formulas/resolver-formula
+[submodule "formulas/ruby-formula"]
+	path = formulas/ruby-formula
+	url = ssh://git@github.com/saltstack-formulas/ruby-formula
+[submodule "formulas/salt-formula"]
+	path = formulas/salt-formula
+	url = ssh://git@github.com/saltstack-formulas/salt-formula
+[submodule "formulas/shinken-formula"]
+	path = formulas/shinken-formula
+	url = ssh://git@github.com/westurner/shinken-formula
+[submodule "formulas/sudoers-formula"]
+	path = formulas/sudoers-formula
+	url = ssh://git@github.com/saltstack-formulas/sudoers-formula
+[submodule "formulas/sun-java-formula"]
+	path = formulas/sun-java-formula
+	url = ssh://git@github.com/saltstack-formulas/sun-java-formula
+[submodule "formulas/supervisord-formula"]
+	path = formulas/supervisord-formula
+	url = ssh://git@github.com/westurner/supervisord-formula
+[submodule "formulas/tftp-formula"]
+	path = formulas/tftp-formula
+	url = ssh://git@github.com/westurner/tftp-formula
+[submodule "formulas/tmux-formula"]
+	path = formulas/tmux-formula
+	url = ssh://git@github.com/saltstack-formulas/tmux-formula
+[submodule "formulas/tortoisehg-formula"]
+	path = formulas/tortoisehg-formula
+	url = ssh://git@github.com/westurner/tortoisehg-formula
+[submodule "formulas/ufw-formula"]
+	path = formulas/ufw-formula
+	url = ssh://git@github.com/westurner/ufw-formula
+[submodule "formulas/vagrant-formula"]
+	path = formulas/vagrant-formula
+	url = ssh://git@github.com/westurner/vagrant-formula
+[submodule "formulas/virtualbox-formula"]
+	path = formulas/virtualbox-formula
+	url = ssh://git@github.com/westurner/virtualbox-formula
+[submodule "formulas/wajig-formula"]
+	path = formulas/wajig-formula
+	url = ssh://git@github.com/westurner/wajig-formula
+[submodule "formulas/winswitch-formula"]
+	path = formulas/winswitch-formula
+	url = ssh://git@github.com/westurner/winswitch-formula
