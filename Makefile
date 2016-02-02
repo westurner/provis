@@ -307,6 +307,7 @@ salt_bootstrap_master:
 
 salt_minion_local:
 	## Copy the /etc/salt/minion file into place (w/ pillar roots)
+	sudo mkdir /etc/salt
 	sudo cp salt/etc/minion /etc/salt/minion
 	sudo salt-call --local test.ping
 	$(MAKE) salt_local_grains
