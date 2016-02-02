@@ -19,10 +19,10 @@ if sys.argv[-1] == 'publish':
 
 datadir = os.path.dirname(__file__)
 
-with codecs.open(os.path.join(datadir, 'README.rst'), 'utf8') as f:
+with codecs.open(os.path.join(datadir, 'README.rst'), 'r', 'utf8') as f:
     readme = f.read()
 
-with codecs.open(os.path.join(datadir, 'HISTORY.rst'), 'utf8') as f:
+with codecs.open(os.path.join(datadir, 'HISTORY.rst'), 'r', 'utf8') as f:
     history = f.read().replace('.. :changelog:', '')
 
 
