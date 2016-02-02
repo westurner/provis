@@ -1,4 +1,0 @@
-
-[submodule "formulas/cobbler-formula"]
-	path = formulas/cobbler-formula
-	url = ssh://git@github.com/westurner/cobbler-formula
