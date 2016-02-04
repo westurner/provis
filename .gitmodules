@@ -386,3 +386,132 @@
 [submodule "formulas__winswitch-formula"]
 	path = formulas/winswitch-formula
 	url = https://github.com/westurner/winswitch-formula
+[submodule "formulas/apt-cacher-ng-formula"]
+	path = formulas/apt-cacher-ng-formula
+	url = https://github.com/westurner/apt-cacher-ng-formula
+[submodule "formulas/apt-formula"]
+	path = formulas/apt-formula
+	url = https://github.com/westurner/apt-formula
+[submodule "formulas/bind-formula"]
+	path = formulas/bind-formula
+	url = https://github.com/westurner/bind-formula
+[submodule "formulas/cobbler-formula"]
+	path = formulas/cobbler-formula
+	url = https://github.com/westurner/cobbler-formula
+[submodule "formulas/dhcpd-formula"]
+	path = formulas/dhcpd-formula
+	url = https://github.com/westurner/dhcpd-formula
+[submodule "formulas/dnsmasq-formula"]
+	path = formulas/dnsmasq-formula
+	url = https://github.com/westurner/dnsmasq-formula
+[submodule "formulas/docker-formula"]
+	path = formulas/docker-formula
+	url = https://github.com/westurner/docker-formula
+[submodule "formulas/dotfiles-formula"]
+	path = formulas/dotfiles-formula
+	url = https://github.com/westurner/dotfiles-formula
+[submodule "formulas/git-formula"]
+	path = formulas/git-formula
+	url = https://github.com/westurner/git-formula
+[submodule "formulas/gitlab-formula"]
+	path = formulas/gitlab-formula
+	url = https://github.com/westurner/gitlab-formula
+[submodule "formulas/heka-formula"]
+	path = formulas/heka-formula
+	url = https://github.com/westurner/heka-formula
+[submodule "formulas/hostsfile-formula"]
+	path = formulas/hostsfile-formula
+	url = https://github.com/westurner/hostsfile-formula
+[submodule "formulas/htop-formula"]
+	path = formulas/htop-formula
+	url = https://github.com/westurner/htop-formula
+[submodule "formulas/i3wm-formula"]
+	path = formulas/i3wm-formula
+	url = https://github.com/westurner/i3wm-formula
+[submodule "formulas/ipython-formula"]
+	path = formulas/ipython-formula
+	url = https://github.com/westurner/ipython-formula
+[submodule "formulas/jenkins-formula"]
+	path = formulas/jenkins-formula
+	url = https://github.com/westurner/jenkins-formula
+[submodule "formulas/libvirt-formula"]
+	path = formulas/libvirt-formula
+	url = https://github.com/westurner/libvirt-formula
+[submodule "formulas/mercurial-formula"]
+	path = formulas/mercurial-formula
+	url = https://github.com/westurner/mercurial-formula
+[submodule "formulas/mysql-formula"]
+	path = formulas/mysql-formula
+	url = https://github.com/westurner/mysql-formula
+[submodule "formulas/nginx-formula"]
+	path = formulas/nginx-formula
+	url = https://github.com/westurner/nginx-formula
+[submodule "formulas/ntp-formula"]
+	path = formulas/ntp-formula
+	url = https://github.com/westurner/ntp-formula
+[submodule "formulas/openssh-formula"]
+	path = formulas/openssh-formula
+	url = https://github.com/westurner/openssh-formula
+[submodule "formulas/packer-formula"]
+	path = formulas/packer-formula
+	url = https://github.com/westurner/packer-formula
+[submodule "formulas/postgres-formula"]
+	path = formulas/postgres-formula
+	url = https://github.com/westurner/postgres-formula
+[submodule "formulas/python-formula"]
+	path = formulas/python-formula
+	url = https://github.com/westurner/python-formula
+[submodule "formulas/repos-formula"]
+	path = formulas/repos-formula
+	url = https://github.com/westurner/repos-formula
+[submodule "formulas/resolver-formula"]
+	path = formulas/resolver-formula
+	url = https://github.com/westurner/resolver-formula
+[submodule "formulas/ruby-formula"]
+	path = formulas/ruby-formula
+	url = https://github.com/westurner/ruby-formula
+[submodule "formulas/salt-formula"]
+	path = formulas/salt-formula
+	url = https://github.com/westurner/salt-formula
+[submodule "formulas/shinken-formula"]
+	path = formulas/shinken-formula
+	url = https://github.com/westurner/shinken-formula
+[submodule "formulas/shorewall-formula"]
+	path = formulas/shorewall-formula
+	url = https://github.com/westurner/shorewall-formula
+[submodule "formulas/sudoers-formula"]
+	path = formulas/sudoers-formula
+	url = https://github.com/westurner/sudoers-formula
+[submodule "formulas/sun-java-formula"]
+	path = formulas/sun-java-formula
+	url = https://github.com/westurner/sun-java-formula
+[submodule "formulas/supervisord-formula"]
+	path = formulas/supervisord-formula
+	url = https://github.com/westurner/supervisord-formula
+[submodule "formulas/tftp-formula"]
+	path = formulas/tftp-formula
+	url = https://github.com/westurner/tftp-formula
+[submodule "formulas/tmux-formula"]
+	path = formulas/tmux-formula
+	url = https://github.com/westurner/tmux-formula
+[submodule "formulas/tortoisehg-formula"]
+	path = formulas/tortoisehg-formula
+	url = https://github.com/westurner/tortoisehg-formula
+[submodule "formulas/ufw-formula"]
+	path = formulas/ufw-formula
+	url = https://github.com/westurner/ufw-formula
+[submodule "formulas/users-formula"]
+	path = formulas/users-formula
+	url = https://github.com/westurner/users-formula
+[submodule "formulas/vagrant-formula"]
+	path = formulas/vagrant-formula
+	url = https://github.com/westurner/vagrant-formula
+[submodule "formulas/virtualbox-formula"]
+	path = formulas/virtualbox-formula
+	url = https://github.com/westurner/virtualbox-formula
+[submodule "formulas/wajig-formula"]
+	path = formulas/wajig-formula
+	url = https://github.com/westurner/wajig-formula
+[submodule "formulas/winswitch-formula"]
+	path = formulas/winswitch-formula
+	url = https://github.com/westurner/winswitch-formula
