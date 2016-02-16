@@ -25,6 +25,8 @@
 #   sudo apt-get install make
 
 HERE:=$(shell pwd)
+_WRD=$(HERE)
+_SRV=/srv
 APPNAME:=provis
 
 PREFIX:=$(strip $(VIRTUAL_ENV))
@@ -313,19 +315,25 @@ salt_minion_local:
 	$(MAKE) salt_local_pillar
 	#$(MAKE) salt_local_highstate
 
+LOG_DEBUG__mount=logger --tag=provis.salt.mount -s 2>&1 | tee -a '$(VARLOG)/salt-bootstrap-mount.log'
 salt_mount_local:
 	## Mount salt directories into /srv/salt and /srv/pillar
-	sudo mkdir -p /srv/salt \
-		| logger --tag=salt.mount >> $(VARLOG)/salt-bootstrap-mount.log
-	sudo mount -o bind ./salt /srv/salt \
-		| logger --tag=salt.mount >> $(VARLOG)/salt-bootstrap-mount.log
-	sudo mkdir -p /srv/pillar \
-		| logger --tag=salt.mount >> $(VARLOG)/salt-bootstrap-mount.log
-	sudo mount -o bind ./pillar /srv/pillar \
-		| logger --tag=salt.mount >> $(VARLOG)/salt-bootstrap-mount.log
+	sudo mkdir -p '$(_SRV)/salt' | $(LOG_DEBUG__mount)
+	sudo mkdir -p '$(_SRV)/pillar' | $(LOG_DEBUG__mount)
+	sudo mkdir -p '$(_SRV)/formulas' | $(LOG_DEBUG__mount)
+	sudo mount -v -o bind '$(_WRD)/salt' '$(_SRV)/salt' | $(LOG_DEBUG__mount)
+	sudo mount -v -o bind '$(_SRC)/pillar' '$(_SRV)/pillar' | $(LOG_DEBUG__mount)
+	sudo mount -v -o bind '$(_WRD)/formulas' '$(_SRV)/formulas' | $(LOG_DEBUG__mount)
+
+salt_umount_local:
+	## Mount salt directories into $(_SRV)/salt, $(_SRV)/pillar, $(_SRV)/formulas
+	sudo umount -v '$(_SRV)/salt' | $(LOG_DEBUG__mount)
+	sudo umount -v '$(_SRV)/pillar' | $(LOG_DEBUG__mount)
+	sudo umount -v '$(_SRV)/formulas' | $(LOG_DEBUG__mount)
 
 salt_mount: salt_mount_local
 
+salt_umount: salt_umount_local
 
 salt_local_test:
 	## Test local salt configuration
