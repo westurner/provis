@@ -19,11 +19,13 @@ if sys.argv[-1] == 'publish':
 
 datadir = os.path.dirname(__file__)
 
-with codecs.open(os.path.join(datadir, 'README.rst'), 'r', 'utf8') as f:
-    readme = f.read()
+def read_file(pth):
+    with codecs.open(pth, 'r', 'utf8') as f:
+        return f.read()
 
-with codecs.open(os.path.join(datadir, 'HISTORY.rst'), 'r', 'utf8') as f:
-    history = f.read().replace('.. :changelog:', '')
+
+readme  = read_file(os.path.join(datadir, 'README.rst'))
+history = read_file(os.path.join(datadir, 'HISTORY.rst'))
 
 
 class PyTestCommand(Command):
