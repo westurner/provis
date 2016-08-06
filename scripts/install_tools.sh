@@ -105,11 +105,11 @@ install_packer_binary() {
   PACARCH=$(echo $BUILD_ARCH | sed 's/i//')  # 386 || amd64
   PACKER="${PACVER}_linux_${PACARCH}.zip"
   PACSHA="${PACVER}_SHA256SUMS?direct"
-  cd $INSTALLDIR
+  cd "${INSTALLDIR}"
   wget -c "https://dl.bintray.com/mitchellh/packer/${PACSHA}"
   wget -c "https://dl.bintray.com/mitchellh/packer/${PACKER}"
   sha256sum -c <(cat $PACSHA | grep "$PACKER")
-  unzip -o ${PACKER} -d $_BIN
+  unzip -o "${PACKER}" -d "${_BIN}"
 }
 
 
